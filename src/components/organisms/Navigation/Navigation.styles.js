@@ -1,12 +1,18 @@
 import styled from 'styled-components'
 
+export const NavigationStyles= styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
 export const Wrapper= styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
 border-radius: 5px;
-background: rgb(212,212,237);
-background: linear-gradient(90deg, rgba(212,212,237,1) 0%, rgba(157,195,204,1) 100%, rgba(9,9,121,1) 100%, rgba(0,212,255,1) 100%);
+width:1400px;
+align-items: center;
 `
 export const Logo = styled.div`
 display: flex;
@@ -19,11 +25,11 @@ animation: flicker 5s infinite alternate;
 
 @keyframes flicker {
     
-    0%, 18%, 22%, 25%, 53%, 100% {
+    53%, 100% {
   
         text-shadow:
-        0 0 19px #111,
-        0 0 40px #333;
+        0 0 4px #111,
+        0 0 20px #333;
   
 
     

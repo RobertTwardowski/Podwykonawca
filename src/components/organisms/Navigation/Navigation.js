@@ -1,8 +1,9 @@
 import React from 'react'
-import { Wrapper, Menu, Logo } from './Navigation.styles'
+import { Wrapper, Menu, Logo,NavigationStyles} from './Navigation.styles'
 
 function Navigation () {
   return (
+    <NavigationStyles>
     <Wrapper>
       <Logo>
         <h1>
@@ -14,13 +15,14 @@ function Navigation () {
           <a href='/'>Home</a>
         </li>
         <li>
-          <a href='/about'>About</a>
+          <a href='/about'>Szukaj</a>
         </li>
         <li>
-          <a href='/contact'>Contact</a>
+          <a href='/contact'>LogIn</a>
         </li>
       </Menu>
     </Wrapper>
+    </NavigationStyles>
   )
 }
 
