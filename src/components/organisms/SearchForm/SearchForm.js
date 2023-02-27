@@ -1,55 +1,62 @@
 import React, { useState } from 'react'
 import { SearchFormStyles, Wrapper } from './SearchForm.styles'
 
-const Wojewodztwa = [
-  { label: 'Dolnośląskie', value: 'dolnośląskie' },
-  { label: 'Kujawsko-Pomorskie', value: 'kujawsko-pomorskie' },
-  { label: 'Lubelskie', value: 'lubelskie' },
-  { label: 'Lubuskie', value: 'lubuskie' },
-  { label: 'Łódzkie', value: 'łódzkie' },
-  { label: 'Małopolskie', value: 'małopolskie' },
-  { label: 'Mazowieckie', value: 'mazowieckie' },
-  { label: 'Opolskie', value: 'opolskie' },
-  { label: 'Podkarpackie', value: 'podkarpackie' },
-  { label: 'Podlaskie', value: 'podlaskie' },
-  { label: 'Pomorskie', value: 'pomorskie' },
-  { label: 'Śląskie', value: 'śląskie' },
-  { label: 'Świętokrzyskie', value: 'świętokrzyskie' },
-  { label: 'Warmińsko-Mazurskie', value: 'warmińsko-mazurskie' },
-  { label: 'Wielkopolskie', value: 'wielkopolskie' },
-  { label: 'Zachodniopomorskie', value: 'zachodniopomorskie' }
+const province = [
+  { name: 'dolnośląskie', cities: ['Wrocław', 'Legnica', 'Jelenia Góra'] },
+  { name: 'kujawsko-pomorskie', cities: ['Bydgoszcz', 'Toruń', 'Włocławek'] },
+  { name: 'lubelskie', cities: ['Lublin', 'Zamość', 'Chełm'] },
+  {
+    name: 'lubuskie',
+    cities: ['Zielona Góra', 'Gorzów Wielkopolski', 'Świebodzin']
+  },
+  { name: 'łódzkie', cities: ['Łódź', 'Piotrków Trybunalski', 'Skierniewice'] },
+  { name: 'małopolskie', cities: ['Kraków', 'Tarnów', 'Nowy Sącz'] },
+  { name: 'mazowieckie', cities: ['Warszawa', 'Radom', 'Płock'] },
+  { name: 'opolskie', cities: ['Opole', 'Kędzierzyn-Koźle', 'Nysa'] },
+  { name: 'podkarpackie', cities: ['Rzeszów', 'Przemyśl', 'Tarnobrzeg'] },
+  { name: 'podlaskie', cities: ['Białystok', 'Suwałki', 'Łomża'] },
+  { name: 'pomorskie', cities: ['Gdańsk', 'Gdynia', 'Słupsk'] },
+  { name: 'śląskie', cities: ['Katowice', 'Bielsko-Biała', 'Częstochowa'] },
+  {
+    name: 'świętokrzyskie',
+    cities: ['Kielce', 'Ostrowiec Świętokrzyski', 'Busko-Zdrój']
+  },
+  { name: 'warmińsko-mazurskie', cities: ['Olsztyn', 'Elbląg', 'Giżycko'] },
+  { name: 'wielkopolskie', cities: ['Poznań', 'Kalisz', 'Konin'] },
+  {
+    name: 'zachodniopomorskie',
+    cities: ['Szczecin', 'Koszalin', 'Świnoujście']
+  }
 ]
+
 const SearchForm = () => {
- 
-    
-        const [imie, setImie] = useState('');
-        const [nazwisko, setNazwisko] = useState('');
-        const [email, setEmail] = useState('');
-      
-        const handleSubmit = (e) => {
-          e.preventDefault();
-          console.log(`Imię: ${imie}, Nazwisko: ${nazwisko}, Email: ${email}`)}
+  const [selectedOption, setSelectedOption] = useState([])
+  const [selectedOptionSecond, setSelectedOptionSecond] = useState([])
+
+  const handleSelectChange = e => {
+    const value = e.target.value.split(',')
+    setSelectedOption(value)
+    setSelectedOptionSecond(value)
+    console.log(value)
+  }
+  const handleSelectChangeSecond = e => {
+    console.log(selectedOptionSecond)
+  }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Imię:
-        <input type="text" value={imie} onChange={(e) => setImie(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Nazwisko:
-        <input type="text" value={nazwisko} onChange={(e) => setNazwisko(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        E-mail:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Wyślij</button>
-    </form>
-  );
+    <SearchFormStyles>
+      <Wrapper>
+        <select value={selectedOption} onChange={handleSelectChange}>
+          <option value=''>Wybierz Województwo</option>
+          {province.map(provinceData => (
+            <option key={provinceData.name} value={provinceData.cities}>
+              {provinceData.name}
+            </option>
+          ))}
+        </select>
+      </Wrapper>
+    </SearchFormStyles>
+  )
 }
 
 export default SearchForm
