@@ -64,6 +64,6 @@ a{
 }
 a:hover{
   cursor:pointer;
-  color: #999;
+  color: #5dbea3;
 }
 `

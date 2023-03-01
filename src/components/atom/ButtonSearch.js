@@ -1,8 +1,10 @@
 import React from 'react'
+import { Button } from './Button.styles'
+
 
 const ButtonSearch = () => {
   return (
-    <button>Szukaj</button>
+    <Button>Szukaj</Button>
   )
 }
 
