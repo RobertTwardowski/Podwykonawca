@@ -9,5 +9,6 @@ color: #333;
 :hover{
 background: #5dbea3;
 color: #fff;
+cursor: pointer;
 }
 `

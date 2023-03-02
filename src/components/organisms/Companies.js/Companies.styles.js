@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import bakcgroundImage from '../../../assets/styles/architect.jpg'
 
 export const CompaniesStyles = styled.div`
 display: flex;
@@ -11,34 +10,21 @@ align-items: center;
 
 export const Wrapper = styled.div`
 display: flex;
-justify-content: center;
-flex-direction: column;
 width: 1200px;
 height: 100%;
+flex-wrap: wrap;
+justify-content: space-between;
 `
 export const SectionStyles = styled.div`
 display: flex;
-flex-direction: row;
-border: solid 2px #999;
-border-radius: 6px;
-width: 100%;
-margin: 1rem;
+flex-basis:calc(50% - 30px);
 height: 10rem;
-`
+border: solid 1px #999;
+border-radius: 6px;
+margin: 10px;
 
-export const SectionFirst = styled.div`
-display: flex;
-background-image: url(${bakcgroundImage});
-width: 20%;
-height: 100%;
-background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-`
-
-export const SectionSecond = styled.div`
-width: 80%;
-height: 100%;
-color: #333;
-background: #F5FFFA;
+:hover{
+  opacity: 0.8;
+  cursor: pointer;
+}
 `
