@@ -43,7 +43,7 @@ const professions = [
 ]
 
 const Form = () => {
-  const [selectedOption, setSelectedOption] = useState([])
+  const [selectedOption, setSelectedOption] = useState('')
   const [selectedOptionSecond, setSelectedOptionSecond] = useState('')
   const [selectedOptionThird, setSelectedOptionThird] = useState('')
 

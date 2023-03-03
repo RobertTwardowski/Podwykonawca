@@ -1,84 +1,23 @@
 import React from 'react'
 import { SectionStyles, SectionFirst, SectionSecond } from './Company.styles'
+import { companyData } from '../../../Data/Data'
 
 const Company = () => {
   return (
     <>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Opis:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Opis:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Opis:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Opis:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
-      <SectionStyles>
-        <SectionFirst />
-
-        <SectionSecond>
-          <h2>Nazwa Firmy:</h2>
-          <p>Specjalizacja:</p>
-          <p>Ocena:</p>
-        </SectionSecond>
-      </SectionStyles>
+      {companyData.map(data => (
+        <SectionStyles>
+          <SectionFirst
+            key={data.name}
+            style={{ backgroundColor: data.logo }}
+          />
+          <SectionSecond key={data.name}>
+            <h2>{data.name}</h2>
+            <p>{data.professions}</p>
+            <button>Więcej informacji...</button>
+          </SectionSecond>
+        </SectionStyles>
+      ))}
     </>
   )
 }
