@@ -10,7 +10,6 @@ export const Wrapper= styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-border-radius: 5px;
 width:1400px;
 align-items: center;
 `

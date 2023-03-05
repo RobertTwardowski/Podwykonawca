@@ -29,6 +29,6 @@ export const FormStyles = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #999;
+  background: #9999;
   border-radius: 6px;
 `

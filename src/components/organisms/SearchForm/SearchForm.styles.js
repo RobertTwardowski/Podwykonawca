@@ -8,10 +8,8 @@ export const SearchFormStyles = styled.div`
 `
 
 export const Wrapper = styled.div`
-  border: solid 1px #222;
   width: 100%;
-  box-shadow: 1px 5px 5px 5px #999;
-  border-radius: 6px;
+  box-shadow: 5px 5px 5px 5px #999;
   height: 400px;
   background-image: url(${bakcgroundImage});
   background-repeat: no-repeat;
