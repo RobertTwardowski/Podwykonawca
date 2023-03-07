@@ -1,20 +1,47 @@
-import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import React, { useState } from 'react'
+import {
+  CompaniesStyles,
+  Wrapper,
+  SectionFirst,
+  SectionSecond,
+  SectionStyles
+} from './Companies.styles'
+import { companyData } from '../../../Data/Data'
 import CompanyDetails from '../../molecules/Company/CompanyDetails'
-import Company from '../../molecules/Company/Company'
+import { Button } from '../../atom/Button.styles'
 
 export const Companies = () => {
+  const [selectedCompany, setSelectedCompany] = useState(null)
+
+  const handleMoreInfoClick = data => {
+    setSelectedCompany(data)
+  }
+
   return (
-    <Router>
-    <Routes>
-     <Route path="/">
-       <Company/>
-     </Route>
-     <Route>
-       <CompanyDetails path="/company"/>
-     </Route>
-    </Routes>
-   </Router>
+    <CompaniesStyles>
+      <Wrapper>
+        {companyData.map(data => (
+          <SectionStyles key={data.id}>
+            <SectionFirst style={{ backgroundColor: data.logo }} />
+            <SectionSecond>
+              <h2>{data.name}</h2>
+              <p>{data.professions}</p>
+              {!selectedCompany || data.id !== selectedCompany.id ? (
+                <Button onClick={() => handleMoreInfoClick(data)}>
+                  Więcej informacji...
+                </Button>
+              ) : null}
+              {selectedCompany && data.id === selectedCompany.id && (
+                <CompanyDetails
+                  data={selectedCompany}
+                  onClose={() => setSelectedCompany(null)}
+                />
+              )}
+            </SectionSecond>
+          </SectionStyles>
+        ))}
+      </Wrapper>
+    </CompaniesStyles>
   )
 }
 

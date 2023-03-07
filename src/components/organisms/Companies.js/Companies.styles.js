@@ -17,8 +17,8 @@ justify-content: space-between;
 `
 export const SectionStyles = styled.div`
 display: flex;
-flex-basis:calc(50% - 30px);
-height: 10rem;
+flex-basis:100%;
+height: 100%;
 border: solid 1px #999;
 border-radius: 6px;
 margin: 10px;
