@@ -8,7 +8,7 @@ import {
 } from './Companies.styles'
 import { companyData } from '../../../Data/Data'
 import CompanyDetails from '../../molecules/Company/CompanyDetails'
-import { Button } from '../../atom/Button.styles'
+import {Button} from '../../atom/ButtonMoreInfo.styles'
 
 export const Companies = () => {
   const [selectedCompany, setSelectedCompany] = useState(null)
@@ -22,10 +22,10 @@ export const Companies = () => {
       <Wrapper>
         {companyData.map(data => (
           <SectionStyles key={data.id}>
-            <SectionFirst style={{ backgroundColor: data.logo }} />
+            <SectionFirst style={{ backgroundColor: data.logo }}>Logo</SectionFirst>
             <SectionSecond>
-              <h2>{data.name}</h2>
-              <p>{data.professions}</p>
+              <h2><span>nazwa firmy: </span> {data.name}</h2>
+              <p><span>Specjalizacja: </span> {data.professions}</p>
               {!selectedCompany || data.id !== selectedCompany.id ? (
                 <Button onClick={() => handleMoreInfoClick(data)}>
                   Więcej informacji...

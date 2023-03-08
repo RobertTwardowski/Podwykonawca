@@ -1,13 +1,19 @@
 import React from 'react'
 
-import { Button } from '../../atom/Button.styles'
+import { Button } from '../../atom/ButtonMoreInfo.styles'
 
 const CompanyDetails = ({ data, onClose }) => {
   return (
-      <div>
-        <p>{data.about}</p>
-        <Button onClick={onClose}>Zamknij</Button>
-      </div>
+    <div>
+      <p>
+        <span>opis: </span> {data.about}
+      </p>
+      <p>
+        <span>numer telefonu: </span>
+        {data.number}
+      </p>
+      <Button onClick={onClose}>Zamknij</Button>
+    </div>
   )
 }
 export default CompanyDetails
