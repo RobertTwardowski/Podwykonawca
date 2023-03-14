@@ -1,6 +1,7 @@
 module.exports = {
-  // ...
-  // Other macros config
+  'fontawesome-svg-core': {
+    'license': 'free'
+  },
   styledComponents: {
     pure: true,
   },
