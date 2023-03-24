@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext } from 'react'
 import ButtonSearch from '../atom/ButtonSearch'
 import { Wrapper, FormStyles } from './Form.styles'
+import { MyContext } from '../../App'
 
 const province = [
   { name: 'dolnośląskie', cities: ['Wrocław', 'Legnica', 'Jelenia Góra'] },
@@ -43,19 +44,20 @@ const professions = [
 ]
 
 const Form = () => {
-  const [selectedOption, setSelectedOption] = useState('')
-  const [selectedOptionSecond, setSelectedOptionSecond] = useState('')
-  const [selectedOptionThird, setSelectedOptionThird] = useState('')
+  const { searchCity, setSearchCity } = useContext(MyContext)
+  const { searchProfession, setSearchProfession } = useContext(MyContext)
+
+  const { selectedOption, setSelectedOption } = useContext(MyContext)
 
   const handleSelectChange = e => {
     setSelectedOption(e.target.value.split(','))
   }
   const handleSelectChangeSecond = e => {
-    setSelectedOptionSecond(e.target.value)
+    setSearchCity(e.target.value)
   }
 
   const handleSelectChangeThird = e => {
-    setSelectedOptionThird(e.target.value)
+    setSearchProfession(e.target.value)
   }
   return (
     <Wrapper>
@@ -69,17 +71,14 @@ const Form = () => {
           ))}
         </select>
         {selectedOption && (
-          <select
-            value={selectedOptionSecond}
-            onChange={handleSelectChangeSecond}
-          >
+          <select value={searchCity} onChange={handleSelectChangeSecond}>
             <option value=''>Wybierz Miasto...</option>
             {selectedOption.map(cities => (
               <option key={cities}>{cities}</option>
             ))}
           </select>
         )}
-        <select value={selectedOptionThird} onChange={handleSelectChangeThird}>
+        <select value={searchProfession} onChange={handleSelectChangeThird}>
           <option value=''>Wybierz Specjalizację...</option>
           {professions.map(professionsName => (
             <option key={professionsName.id} value={professionsName.name}>
@@ -89,7 +88,6 @@ const Form = () => {
         </select>
         <ButtonSearch />
       </FormStyles>
-      
     </Wrapper>
   )
 }
