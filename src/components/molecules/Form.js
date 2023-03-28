@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext } from 'react'
 import ButtonSearch from '../atom/ButtonSearch'
 import { Wrapper, FormStyles } from './Form.styles'
 import { MyContext } from '../../App'
@@ -44,15 +44,14 @@ const professions = [
 ]
 
 const Form = () => {
-  const [search, setSearch] = useState(false);
+  const {search, setSearch} = useContext(MyContext)
   const { searchCity, setSearchCity } = useContext(MyContext)
   const { searchProfession, setSearchProfession } = useContext(MyContext)
-
   const { selectedOption, setSelectedOption } = useContext(MyContext)
 
- 
-  const handleButtonClick = (value) => {
-    setSearch(value);
+  const handleButtonClick = value => {
+    setSearch(value)
+    console.log(search);
   }
 
   const handleSelectChange = e => {
@@ -83,9 +82,15 @@ const Form = () => {
               <option key={cities}>{cities}</option>
             ))}
           </select>
-        ) : <select style={{cursor:'not-allowed'}} value={searchCity} onChange={handleSelectChangeSecond}>
-        <option>Wybierz Miasto...</option>
-      </select>}
+        ) : (
+          <select
+            style={{ cursor: 'not-allowed' }}
+            value={searchCity}
+            onChange={handleSelectChangeSecond}
+          >
+            <option>Wybierz Miasto...</option>
+          </select>
+        )}
         <select value={searchProfession} onChange={handleSelectChangeThird}>
           <option value=''>Wybierz Specjalizację...</option>
           {professions.map(professionsName => (
@@ -94,7 +99,7 @@ const Form = () => {
             </option>
           ))}
         </select>
-        <ButtonSearch onClick={handleButtonClick}/>
+        <ButtonSearch onClick={handleButtonClick} />
       </FormStyles>
     </Wrapper>
   )

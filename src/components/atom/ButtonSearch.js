@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Button } from './ButtonSearch.styles'
 
 const ButtonSearch = ({ onClick }) => {
-  const [search, setSearch] = useState(false)
 
   const handelClickSearch = () => {
-    setSearch(true)
     onClick(true)
   }
 

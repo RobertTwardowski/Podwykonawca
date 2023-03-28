@@ -10,13 +10,13 @@ export const MyContext = createContext()
 
 
 function App () {
-
+const [search, setSearch] = useState(false);
 const [searchCity, setSearchCity] = useState('')
 const [searchProfession ,setSearchProfession] = useState('')
 const [selectedOption, setSelectedOption] =useState('')
 
   return (
-    <MyContext.Provider value={{searchCity, setSearchCity,searchProfession ,setSearchProfession,selectedOption, setSelectedOption}}>
+    <MyContext.Provider value={{searchCity, setSearchCity,searchProfession ,setSearchProfession,selectedOption, setSelectedOption,search, setSearch,}}>
       <GlobalStyle />
       <Navigation />
       <SearchForm />
