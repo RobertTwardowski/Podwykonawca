@@ -44,18 +44,17 @@ const professions = [
 ]
 
 const Form = () => {
-  const {search, setSearch} = useContext(MyContext)
+  const {setSearch} = useContext(MyContext)
   const { searchCity, setSearchCity } = useContext(MyContext)
   const { searchProfession, setSearchProfession } = useContext(MyContext)
-  const { selectedOption, setSelectedOption } = useContext(MyContext)
+  const { selectedProvince, setSelectedProvince } = useContext(MyContext)
 
   const handleButtonClick = value => {
     setSearch(value)
-    console.log(search);
   }
 
   const handleSelectChange = e => {
-    setSelectedOption(e.target.value.split(','))
+    setSelectedProvince(e.target.value.split(','))
   }
   const handleSelectChangeSecond = e => {
     setSearchCity(e.target.value)
@@ -67,7 +66,7 @@ const Form = () => {
   return (
     <Wrapper>
       <FormStyles>
-        <select value={selectedOption} onChange={handleSelectChange}>
+        <select value={selectedProvince} onChange={handleSelectChange}>
           <option value=''>Wybierz Województwo...</option>
           {province.map(provinceData => (
             <option key={provinceData.name} value={provinceData.cities}>
@@ -75,10 +74,10 @@ const Form = () => {
             </option>
           ))}
         </select>
-        {selectedOption ? (
+        {selectedProvince ? (
           <select value={searchCity} onChange={handleSelectChangeSecond}>
             <option value=''>Wybierz Miasto...</option>
-            {selectedOption.map(cities => (
+            {selectedProvince.map(cities => (
               <option key={cities}>{cities}</option>
             ))}
           </select>

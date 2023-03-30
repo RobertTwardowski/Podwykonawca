@@ -1,6 +1,7 @@
 export const companyData = [
   {
     id:1,
+    province: 'łódzkie',
     name: 'ElBud',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -11,6 +12,7 @@ export const companyData = [
   },
   {
     id:2,
+    province: 'łódzkie',
     name: 'ElTech',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -20,6 +22,7 @@ export const companyData = [
       logo: '#E91E63'
   },
   {id:3,
+    province: 'łódzkie',
     name: 'Elle',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -30,6 +33,7 @@ export const companyData = [
   },
   {
     id:4,
+    province: 'łódzkie',
     name: 'ElPan',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -40,6 +44,7 @@ export const companyData = [
   },
   {
     id:5,
+    province: 'łódzkie',
     name: 'ElMod',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -49,6 +54,7 @@ export const companyData = [
       logo: '#2196F3'
   },
   {id:6,
+    province: 'łódzkie',
     name: 'Tech',
     professions: 'Elektryk Budowlany',
     cities: 'Łódź',
@@ -59,6 +65,7 @@ export const companyData = [
       logo: '#9C27B0'
   },
   {id:7,
+    province: 'mazowieckie',
     name: 'Geo',
     professions: 'Geodeta',
     cities: 'Warszawa',
@@ -68,6 +75,7 @@ export const companyData = [
       logo: '#F44336 '
   },
   {id:8,
+    province: 'mazowieckie',
     name: 'GeoS',
     professions: 'Geodeta',
     cities: 'Warszawa',
@@ -77,6 +85,7 @@ export const companyData = [
       logo: '#00BCD4'
   },
   {id:9,
+    province: 'mazowieckie',
     name: 'GeoR',
     professions: 'Geodeta',
     cities: 'Warszawa',
@@ -86,6 +95,7 @@ export const companyData = [
       logo: '#E91E63'
   },
   {id:10,
+    province: 'śląskie',
     name: 'GeoT',
     professions: 'Geodeta',
     cities: 'Zabrze',
@@ -95,6 +105,7 @@ export const companyData = [
       logo: '#795548'
   },
   {id:11,
+    province: 'mazowieckie',
     name: 'GeoV',
     professions: 'Geodeta',
     cities: 'Warszawa',
@@ -104,6 +115,7 @@ export const companyData = [
       logo: '#607D8B'
   },
   {id:12,
+    province: 'mazowieckie',
     name: 'MurarzTop',
     professions: 'Murarz',
     cities: 'Warszawa',
@@ -114,6 +126,7 @@ export const companyData = [
       logo: '#607D8B'
   },
   {id:13,
+    province: 'mazowieckie',
     name: 'MurarzZ',
     professions: 'Murarz',
     cities: 'Warszawa',
@@ -123,6 +136,7 @@ export const companyData = [
       logo: '#00BCD4'
   },
   {id:14,
+    province: 'śląskie',
     name: 'MurarzT',
     professions: 'Murarz',
     cities: 'Zabrze',
@@ -133,6 +147,7 @@ export const companyData = [
       logo: '#E91E63'
   },
   {id:15,
+    province: 'śląskie',
     name: 'MurarzA',
     professions: 'Murarz',
     cities: 'Zabrze',
