@@ -3,7 +3,7 @@ export const companyData = [
     id:1,
     province: 'łódzkie',
     name: 'ElBud',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:
@@ -14,7 +14,7 @@ export const companyData = [
     id:2,
     province: 'łódzkie',
     name: 'ElTech',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:
@@ -24,7 +24,7 @@ export const companyData = [
   {id:3,
     province: 'łódzkie',
     name: 'Elle',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:
@@ -35,7 +35,7 @@ export const companyData = [
     id:4,
     province: 'łódzkie',
     name: 'ElPan',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:
@@ -46,7 +46,7 @@ export const companyData = [
     id:5,
     province: 'łódzkie',
     name: 'ElMod',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:
@@ -56,7 +56,7 @@ export const companyData = [
   {id:6,
     province: 'łódzkie',
     name: 'Tech',
-    professions: 'Elektryk Budowlany',
+    professions: 'Elektryk budowlany',
     cities: 'Łódź',
     number: '111111111',
     about:

@@ -10,29 +10,28 @@ export const MyContext = createContext()
 
 function App () {
   const [search, setSearch] = useState(false)
-  const [searchCity, setSearchCity] = useState('')
-  const [searchProfession, setSearchProfession] = useState('')
-  const [selectedProvince, setSelectedProvince] = useState('')
+  const [city, setCity] = useState('')
+  const [profession, setProfession] = useState('')
 
   return (
-    <MyContext.Provider
-      value={{
-        searchCity,
-        setSearchCity,
-        searchProfession,
-        setSearchProfession,
-        selectedProvince,
-        setSelectedProvince,
-        search,
-        setSearch
-      }}
-    >
+    <>
       <GlobalStyle />
       <Navigation />
-      <SearchForm />
-      <Companies />
+      <MyContext.Provider
+        value={{
+          search,
+          setSearch,
+          profession,
+          setProfession,
+          city,
+          setCity
+        }}
+      >
+        <SearchForm />
+        <Companies />
+      </MyContext.Provider>
       <Footer />
-    </MyContext.Provider>
+    </>
   )
 }
 

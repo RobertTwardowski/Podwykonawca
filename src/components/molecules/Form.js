@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext,useState } from 'react'
 import ButtonSearch from '../atom/ButtonSearch'
 import { Wrapper, FormStyles } from './Form.styles'
 import { MyContext } from '../../App'
@@ -18,7 +18,7 @@ const province = [
   { name: 'podkarpackie', cities: ['Rzeszów', 'Przemyśl', 'Tarnobrzeg'] },
   { name: 'podlaskie', cities: ['Białystok', 'Suwałki', 'Łomża'] },
   { name: 'pomorskie', cities: ['Gdańsk', 'Gdynia', 'Słupsk'] },
-  { name: 'śląskie', cities: ['Katowice', 'Bielsko-Biała', 'Częstochowa'] },
+  { name: 'śląskie', cities: ['Katowice', 'Bielsko-Biała', 'Częstochowa','Zabrze'] },
   {
     name: 'świętokrzyskie',
     cities: ['Kielce', 'Ostrowiec Świętokrzyski', 'Busko-Zdrój']
@@ -45,12 +45,17 @@ const professions = [
 
 const Form = () => {
   const {setSearch} = useContext(MyContext)
-  const { searchCity, setSearchCity } = useContext(MyContext)
-  const { searchProfession, setSearchProfession } = useContext(MyContext)
-  const { selectedProvince, setSelectedProvince } = useContext(MyContext)
+  const [ searchCity, setSearchCity ] = useState('')
+  const [ searchProfession, setSearchProfession ] = useState('')
+  const [selectedProvince, setSelectedProvince ] = useState('')
+  const {setCity} = useContext(MyContext)
+  const {setProfession} = useContext(MyContext)
 
-  const handleButtonClick = value => {
+
+  const handleButtonClick = (value) => {
     setSearch(value)
+    setCity(searchCity)
+    setProfession(searchProfession)
   }
 
   const handleSelectChange = e => {

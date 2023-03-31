@@ -9,6 +9,9 @@ const CompanyDetails = ({ data, onClose }) => {
         <span>opis: </span> {data.about}
       </p>
       <p>
+        <span>miasto: </span> {data.cities}
+      </p>
+      <p>
         <span>numer telefonu: </span>
         {data.number}
       </p>
