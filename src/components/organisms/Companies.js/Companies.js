@@ -22,7 +22,6 @@ export const Companies = () => {
     data.professions === profession
   )
 
-  const professionAll = companyData.filter(data => data.professions === profession)
  
 
   const handleMoreInfoClick = data => {
