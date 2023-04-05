@@ -12,6 +12,7 @@ function App () {
   const [search, setSearch] = useState(false)
   const [city, setCity] = useState('')
   const [profession, setProfession] = useState('')
+  const [province, setProvince] = useState('')
 
   return (
     <>
@@ -24,7 +25,9 @@ function App () {
           profession,
           setProfession,
           city,
-          setCity
+          setCity,
+          province,
+          setProvince
         }}
       >
         <SearchForm />

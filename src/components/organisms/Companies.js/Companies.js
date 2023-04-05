@@ -16,6 +16,7 @@ export const Companies = () => {
   const { search } = useContext(MyContext)
   const { city,setCity } = useContext(MyContext)
   const { profession,setProfession } = useContext(MyContext)
+  const {setProvince} =useContext(MyContext)
 
   const cityChosen = companyData.filter(data => data.cities === city)
   const professionChosen = cityChosen.filter(data =>
@@ -87,11 +88,10 @@ export const Companies = () => {
             </SectionSecond>
           </SectionStyles>
         )) }
-        if(!profession && city) {
-        return (<SectionStyles><h1>Wybierz profesje</h1></SectionStyles>)}  
       } 
       setCity('')
       setProfession('')
+      setProvince('')
     }
     
   

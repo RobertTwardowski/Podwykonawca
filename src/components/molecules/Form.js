@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ButtonSearch from '../atom/ButtonSearch'
 import { Wrapper, FormStyles } from './Form.styles'
 import { MyContext } from '../../App'
@@ -18,7 +18,10 @@ const province = [
   { name: 'podkarpackie', cities: ['Rzeszów', 'Przemyśl', 'Tarnobrzeg'] },
   { name: 'podlaskie', cities: ['Białystok', 'Suwałki', 'Łomża'] },
   { name: 'pomorskie', cities: ['Gdańsk', 'Gdynia', 'Słupsk'] },
-  { name: 'śląskie', cities: ['Katowice', 'Bielsko-Biała', 'Częstochowa','Zabrze'] },
+  {
+    name: 'śląskie',
+    cities: ['Katowice', 'Bielsko-Biała', 'Częstochowa', 'Zabrze']
+  },
   {
     name: 'świętokrzyskie',
     cities: ['Kielce', 'Ostrowiec Świętokrzyski', 'Busko-Zdrój']
@@ -44,25 +47,28 @@ const professions = [
 ]
 
 const Form = () => {
-  const {setSearch} = useContext(MyContext)
-  const [ searchCity, setSearchCity ] = useState('')
-  const [ searchProfession, setSearchProfession ] = useState('')
-  const [selectedProvince, setSelectedProvince ] = useState('')
-  const {setCity} = useContext(MyContext)
-  const {setProfession} = useContext(MyContext)
+  const { setSearch } = useContext(MyContext)
+  const [searchCity, setSearchCity] = useState('')
+  const [searchProfession, setSearchProfession] = useState('')
+  const [selectedProvince, setSelectedProvince] = useState('')
+  const { setCity } = useContext(MyContext)
+  const { setProfession } = useContext(MyContext)
+  const { setProvince } = useContext(MyContext)
 
-
-  const handleButtonClick = (value) => {
+  const handleButtonClick = value => {
     setSearch(value)
     setCity(searchCity)
     setProfession(searchProfession)
+    setProvince(selectedProvince)
   }
 
   const handleSelectChange = e => {
     setSelectedProvince(e.target.value.split(','))
+
   }
   const handleSelectChangeSecond = e => {
     setSearchCity(e.target.value)
+    searchProfession('')
   }
 
   const handleSelectChangeThird = e => {
@@ -87,22 +93,25 @@ const Form = () => {
             ))}
           </select>
         ) : (
-          <select
-            style={{ cursor: 'not-allowed' }}
-            value={searchCity}
-            onChange={handleSelectChangeSecond}
-          >
+          <select style={{ cursor: 'not-allowed', color: '#9999' }}>
             <option>Wybierz Miasto...</option>
           </select>
         )}
-        <select value={searchProfession} onChange={handleSelectChangeThird}>
-          <option value=''>Wybierz Specjalizację...</option>
-          {professions.map(professionsName => (
-            <option key={professionsName.id} value={professionsName.name}>
-              {professionsName.name}
-            </option>
-          ))}
-        </select>
+        {searchCity ? (
+          <select value={searchProfession} onChange={handleSelectChangeThird}>
+            <option value=''>Wybierz Specjalizację...</option>
+            {professions.map(professionsName => (
+              <option key={professionsName.id} value={professionsName.name}>
+                {professionsName.name}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <select style={{ cursor: 'not-allowed', color: '#9999' }}>
+            <option>Wybierz Specjalizacja...</option>
+          </select>
+        )}
+
         <ButtonSearch onClick={handleButtonClick} />
       </FormStyles>
     </Wrapper>
