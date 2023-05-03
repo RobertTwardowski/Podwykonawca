@@ -68,7 +68,7 @@ const Form = () => {
   }
   const handleSelectChangeSecond = e => {
     setSearchCity(e.target.value)
-    searchProfession('')
+    
   }
 
   const handleSelectChangeThird = e => {

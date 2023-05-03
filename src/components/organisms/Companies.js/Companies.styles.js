@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ReactPaginate from "react-paginate";
 
 
 export const CompaniesStyles = styled.div`
@@ -50,3 +51,31 @@ p{
   margin: 0.5rem;
 }
 `
+export const StyledReactPaginate = styled(ReactPaginate)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  list-style: none;
+  margin: 1rem;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin: 0 5px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 3px;
+    
+    
+    :hover,&.selected {
+      background-color: #007bff;
+      color: #fff;
+      border-color: #007bff;
+    }
+    a {
+      padding: 5px 10px;
+    }
+  }
+`;
