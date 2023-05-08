@@ -97,7 +97,7 @@ const Form = () => {
             <option>Wybierz Miasto...</option>
           </select>
         )}
-        {searchCity ? (
+        {searchCity && selectedProvince ? (
           <select value={searchProfession} onChange={handleSelectChangeThird}>
             <option value=''>Wybierz Specjalizację...</option>
             {professions.map(professionsName => (

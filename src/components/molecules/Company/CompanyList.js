@@ -1,62 +1,23 @@
-import React,{useState,useContext,useEffect} from "react"
+import React,{useState,useContext} from "react"
 import { Button } from '../../atom/ButtonMoreInfo.styles'
-import { MyContext } from '../../../App'
-import { companyData } from '../../../Data/Data'
 import { SectionFirst,SectionSecond,StyledReactPaginate,SectionStyles  } from "./CompanyListy.styles"
 import CompanyDetails from './CompanyDetails'
+import { MyContext } from '../../../App'
 
 
 
-
-export const CompanyList = ({itemsPerPage}) => {
+export const CompanyList = ({currentItems,handlePageClick,professionChosen,handlePageClickProfession,pageCount}) => {
 
     const [selectedCompany, setSelectedCompany] = useState(null)
     const { search } = useContext(MyContext)
     const { city } = useContext(MyContext)
     const { profession} = useContext(MyContext)
-    const companyDataArray = Object.values(companyData);
-  
-    const cityChosen = companyData.filter(data => data.cities === city)
-    const professionChosen = cityChosen.filter(
-      data => data.professions === profession
-    )
-  
-    const [currentItems, setCurrentItems] = useState(null)
-    const [pageCount, setPageCount] = useState(0)
    
-    const [itemOffset, setItemOffset] = useState(0)
-    useEffect(() => {
-      if(!search){const companyDataArray = Object.values(companyData);
-    
-        const endOffset = itemOffset + itemsPerPage
-        
-        setCurrentItems(companyDataArray.slice(itemOffset, endOffset))
-        setPageCount(Math.ceil(companyDataArray.length / itemsPerPage))
-      }
-      if(search){
-        const companyDataArray = Object.values(professionChosen);
-        const endOffset = itemOffset + itemsPerPage
-        setCurrentItems(companyDataArray.slice(itemOffset, endOffset))
-        setPageCount(Math.ceil(companyDataArray.length / itemsPerPage))
-      }
-  
-        
-        
-    }, [itemOffset, itemsPerPage,search,professionChosen])
-  
-    
-    const handlePageClick = event => {
-      const newOffset = (event.selected * itemsPerPage) % companyDataArray.length
-      setItemOffset(newOffset)
-    }
-    const handlePageClickProfession = event => {
-      const newOffset = (event.selected * itemsPerPage) % professionChosen.length
-      setItemOffset(newOffset)
-    }
    
     const handleMoreInfoClick = data => {
       setSelectedCompany(data)
     }
+
 
     if (!search) 
       {return <> {currentItems && currentItems.map(data => (
