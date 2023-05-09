@@ -31,7 +31,7 @@ function App () {
         }}
       >
         <SearchForm />
-        <Companies itemsPerPage={5}/>
+        <Companies itemsPerPage={4}/>
       </MyContext.Provider>
       <Footer />
     </>
