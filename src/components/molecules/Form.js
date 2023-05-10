@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react'
 import ButtonSearch from '../atom/ButtonSearch'
 import { Wrapper, FormStyles } from './Form.styles'
 import { MyContext } from '../../App'
+import { companyData } from '../../Data/Data'
 
-const province = [
+const provinces = [
   { name: 'dolnośląskie', cities: ['Wrocław', 'Legnica', 'Jelenia Góra'] },
   { name: 'kujawsko-pomorskie', cities: ['Bydgoszcz', 'Toruń', 'Włocławek'] },
   { name: 'lubelskie', cities: ['Lublin', 'Zamość', 'Chełm'] },
@@ -55,6 +56,18 @@ const Form = () => {
   const { setProfession } = useContext(MyContext)
   const { setProvince } = useContext(MyContext)
 
+  const province = companyData
+    .map(item => item.province)
+    .filter((value, index, self) => self.indexOf(value) === index)
+
+    const city = selectedProvince ? companyData
+    .filter(item => item.province === selectedProvince)
+    .map(item => item.cities)
+    .filter((value, index, self) => self.indexOf(value) === index)
+    : [];
+  
+  
+
   const handleButtonClick = value => {
     setSearch(value)
     setCity(searchCity)
@@ -64,11 +77,11 @@ const Form = () => {
 
   const handleSelectChange = e => {
     setSelectedProvince(e.target.value.split(','))
-
+    console.log(city)
+    console.log(selectedProvince);
   }
   const handleSelectChangeSecond = e => {
     setSearchCity(e.target.value)
-    
   }
 
   const handleSelectChangeThird = e => {
@@ -80,8 +93,8 @@ const Form = () => {
         <select value={selectedProvince} onChange={handleSelectChange}>
           <option value=''>Wybierz Województwo...</option>
           {province.map(provinceData => (
-            <option key={provinceData.name} value={provinceData.cities}>
-              {provinceData.name}
+            <option key={provinceData} value={provinceData}>
+              {provinceData}
             </option>
           ))}
         </select>

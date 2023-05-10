@@ -6,6 +6,7 @@ import SearchForm from './components/organisms/SearchForm/SearchForm.js'
 import Companies from './components/organisms/Companies.js/Companies.js'
 import Footer from './components/organisms/Footer/Footer.js'
 
+
 export const MyContext = createContext()
 
 function App () {
@@ -13,6 +14,7 @@ function App () {
   const [city, setCity] = useState('')
   const [profession, setProfession] = useState('')
   const [province, setProvince] = useState('')
+
 
   return (
     <>
@@ -31,7 +33,7 @@ function App () {
         }}
       >
         <SearchForm />
-        <Companies itemsPerPage={4}/>
+        <Companies itemsPerPage={10}/>
       </MyContext.Provider>
       <Footer />
     </>
