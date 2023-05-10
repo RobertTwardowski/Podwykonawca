@@ -1,11 +1,11 @@
 {
   "files": {
-    "main.js": "/Podwykonawca/static/js/main.d10634cd.js",
+    "main.js": "/Podwykonawca/static/js/main.4da434ed.js",
     "static/media/architect.jpg": "/Podwykonawca/static/media/architect.f8b33bca9944d98264ae.jpg",
     "index.html": "/Podwykonawca/index.html",
-    "main.d10634cd.js.map": "/Podwykonawca/static/js/main.d10634cd.js.map"
+    "main.4da434ed.js.map": "/Podwykonawca/static/js/main.4da434ed.js.map"
   },
   "entrypoints": [
-    "static/js/main.d10634cd.js"
+    "static/js/main.4da434ed.js"
   ]
 }
