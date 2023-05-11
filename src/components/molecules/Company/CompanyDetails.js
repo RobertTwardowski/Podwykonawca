@@ -16,6 +16,7 @@ const CompanyDetails = ({ data, onClose }) => {
         {data.number}
       </p>
       <Button onClick={onClose}>Zamknij</Button>
+      <Button>Przejdź do ogłoszenia</Button>
     </div>
   )
 }

@@ -7,7 +7,7 @@ display: flex;
 height: 100%;
 justify-content: center;
 align-items: center;
-
+background-color: #f2f4f5;
 `
 
 export const Wrapper = styled.div`
@@ -15,5 +15,6 @@ display: flex;
 width: 1200px;
 height: 100%;
 flex-wrap: wrap;
-justify-content: space-between;
+justify-content: center;
+align-self: center;
 `

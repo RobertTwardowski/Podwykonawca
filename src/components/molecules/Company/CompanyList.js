@@ -4,7 +4,9 @@ import {
   SectionFirst,
   SectionSecond,
   StyledReactPaginate,
-  SectionStyles
+  SectionStyles,
+  Rating,
+  SectionThird
 } from './CompanyListy.styles'
 import CompanyDetails from './CompanyDetails'
 import { MyContext } from '../../../App'
@@ -20,55 +22,64 @@ export const CompanyList = ({
   const { search } = useContext(MyContext)
   const { city } = useContext(MyContext)
   const { profession } = useContext(MyContext)
-  
 
   const handleMoreInfoClick = data => {
     setSelectedCompany(data)
   }
- 
-
-  if (!search) {
-    return (
-      <>
-        {currentItems &&
-          currentItems.map(data => (
-            <SectionStyles key={data.id}>
-              <SectionFirst style={{ backgroundColor: data.logo }}>
-                Logo
-              </SectionFirst>
-              <SectionSecond>
-                <h2>
-                  <span>nazwa firmy: </span> {data.name}
-                </h2>
-                <p>
-                  <span>Specjalizacja: </span> {data.professions}
-                </p>
-                {!selectedCompany || data.id !== selectedCompany.id ? (
-                  <Button onClick={() => handleMoreInfoClick(data)}>
-                    Więcej informacji...
-                  </Button>
-                ) : null}
-                {selectedCompany && data.id === selectedCompany.id && (
-                  <CompanyDetails
-                    data={selectedCompany}
-                    onClose={() => setSelectedCompany(null)}
-                  />
-                )}
-              </SectionSecond>
-            </SectionStyles>
-          ))}
-        <StyledReactPaginate
-          breakLabel='...'
-          nextLabel='next >'
-          onPageChange={handlePageClick}
-          pageRangeDisplayed={5}
-          pageCount={pageCount}
-          previousLabel='< previous'
-          renderOnZeroPageCount={null}
-        />
-      </>
-    )
-  }
+      if (!search) {
+        return (
+          <>
+            {currentItems &&
+              currentItems.map(data => {
+                const colorStyle =
+                  data.rating >= 4
+                    ? { color: '#228B22' }
+                    : data.rating == 3
+                    ? { color: '#E3A329' }
+                    : { color: '#B22222' }
+                return (
+                  <SectionStyles key={data.id}>
+                    <SectionFirst style={{ backgroundColor: data.logo }}>
+                      Logo
+                    </SectionFirst>
+                    <SectionSecond>
+                      <h2>{data.name}</h2>
+                      <p>
+                        <span>Specjalizacja: </span> {data.professions}
+                      </p>
+                      <SectionThird>
+                        {!selectedCompany || data.id !== selectedCompany.id ? (
+                          <Button onClick={() => handleMoreInfoClick(data)}>
+                            Więcej informacji...
+                          </Button>
+                        ) : null}
+                        {selectedCompany && data.id === selectedCompany.id && (
+                          <CompanyDetails
+                            data={selectedCompany}
+                            onClose={() => setSelectedCompany(null)}
+                          />
+                        )}
+                        <Rating>
+                          <span>Ocena:</span>
+                          <span style={colorStyle}>{data.rating}/5</span>
+                        </Rating>
+                      </SectionThird>
+                    </SectionSecond>
+                  </SectionStyles>
+                )
+              })}
+            <StyledReactPaginate
+              breakLabel='...'
+              nextLabel='next >'
+              onPageChange={handlePageClick}
+              pageRangeDisplayed={5}
+              pageCount={pageCount}
+              previousLabel='< previous'
+              renderOnZeroPageCount={0}
+            />
+          </>
+        )
+      }
   if (search) {
     if (professionChosen.length === 0) {
       return (
@@ -81,45 +92,54 @@ export const CompanyList = ({
       return (
         <>
           {currentItems &&
-            currentItems.map(data => (
-              <SectionStyles key={data.id}>
-                <SectionFirst style={{ backgroundColor: data.logo }}>
-                  Logo
-                </SectionFirst>
-                <SectionSecond>
-                  <h2>
-                    <span>nazwa firmy: </span> {data.name}
-                  </h2>
-                  <p>
-                    <span>Specjalizacja: </span> {data.professions}
-                  </p>
-                  {!selectedCompany || data.id !== selectedCompany.id ? (
-                    <Button onClick={() => handleMoreInfoClick(data)}>
-                      Więcej informacji...
-                    </Button>
-                  ) : null}
-                  {selectedCompany && data.id === selectedCompany.id && (
-                    <CompanyDetails
-                      data={selectedCompany}
-                      onClose={() => setSelectedCompany(null)}
-                    />
-                  )}
-                </SectionSecond>
-              </SectionStyles>
-            ))}
+            currentItems.map(data => {
+              const colorStyle =
+                data.rating >= 4
+                  ? { color: '#228B22' }
+                  : data.rating == 3
+                  ? { color: '#E3A329' }
+                  : { color: '#B22222' }
+              return (
+                <SectionStyles key={data.id}>
+                  <SectionFirst style={{ backgroundColor: data.logo }}>
+                    Logo
+                  </SectionFirst>
+                  <SectionSecond>
+                    <h2>{data.name}</h2>
+                    <p>
+                      <span>Specjalizacja: </span> {data.professions}
+                    </p>
+                    <SectionThird>
+                      {!selectedCompany || data.id !== selectedCompany.id ? (
+                        <Button onClick={() => handleMoreInfoClick(data)}>
+                          Więcej informacji...
+                        </Button>
+                      ) : null}
+                      {selectedCompany && data.id === selectedCompany.id && (
+                        <CompanyDetails
+                          data={selectedCompany}
+                          onClose={() => setSelectedCompany(null)}
+                        />
+                      )}
+                      <Rating>
+                        <span>Ocena:</span>
+                        <span style={colorStyle}>{data.rating}/5</span>
+                      </Rating>
+                    </SectionThird>
+                  </SectionSecond>
+                </SectionStyles>
+              )
+            })}
           <StyledReactPaginate
-          key={city && profession}
             breakLabel='...'
             nextLabel='next >'
-            onPageChange={handlePageClickProfession}
+            onPageChange={handlePageClick}
             pageRangeDisplayed={5}
             pageCount={pageCount}
             previousLabel='< previous'
-            renderOnZeroPageCount={null}
-            forcePage={0}
+            renderOnZeroPageCount={0}
           />
         </>
       )
-    }
-  }
+    }}
 }

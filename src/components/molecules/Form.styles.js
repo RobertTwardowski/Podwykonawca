@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
   }
 `
 export const FormStyles = styled.div`
-  width: 55%;
+  width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;

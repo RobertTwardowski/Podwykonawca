@@ -4,36 +4,39 @@ import ReactPaginate from "react-paginate";
 
 export const SectionStyles = styled.div`
 display: flex;
-border: solid 1px #D4D9DB;
 width: 100%;
-box-shadow: 1px 4px 4px 4px #D4D9DB;
+box-shadow: 1px 2px 2px 2px white;
 border-radius: 6px;
-margin: 1rem;
+margin: 10px;
+background-color: white;
 
 `
 
 export const SectionFirst = styled.div`
-width: 105px;
-height: 105px;
+width: 200px;
+height: 150px;
 display: flex;
 justify-content: center;
 align-items: center;
-border: solid 1px #333;
+
 `
 
 export const SectionSecond = styled.div`
+position: relative;
 width: 100%;
 height: 100%;
-color: #333;
+text-align: center;
 span{
     font-size: 1rem;
     font-weight: bold;
 }
 h2{
-    margin: 0.5rem 0.5rem;
+    padding: 10px;
 }
+
 p{
-  margin: 0.5rem;
+  font-weight: bold;
+  padding: 10px;
 }
 `
 export const StyledReactPaginate = styled(ReactPaginate)`
@@ -42,8 +45,7 @@ export const StyledReactPaginate = styled(ReactPaginate)`
   align-items: center;
   width: 100%;
   list-style: none;
-  margin: 1rem;
-  padding: 0;
+  padding:20px;
 
   li {
     display: inline-block;
@@ -55,12 +57,26 @@ export const StyledReactPaginate = styled(ReactPaginate)`
     
     
     :hover,&.selected {
-      background-color: #007bff;
-      color: #fff;
-      border-color: #007bff;
+      background-color: #9999;
     }
     a {
       padding: 5px 10px;
     }
   }
-`;
+`
+export const SectionThird =styled.div`
+
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+align-self: flex-end;
+button{
+  width: 25%;
+}
+`
+export const Rating = styled.p`
+position: absolute;
+right:0;
+bottom:0;
+`
