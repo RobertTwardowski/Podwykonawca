@@ -5,7 +5,9 @@ import { GlobalStyle } from './assets/styles/GlobalStyles'
 import SearchForm from './components/organisms/SearchForm/SearchForm.js'
 import Companies from './components/organisms/Companies.js/Companies.js'
 import Footer from './components/organisms/Footer/Footer.js'
-
+import { Registration } from './components/organisms/Registration/Registration.js'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { LogIn } from './components/organisms/LogIn/LogIn.js'
 
 export const MyContext = createContext()
 
@@ -15,11 +17,17 @@ function App () {
   const [profession, setProfession] = useState('')
   const [province, setProvince] = useState('')
 
-
   return (
     <>
+      <Router>
+        <Routes>
+          <Route exact path='/rejestracja' Component={Registration}></Route>
+          <Route exact path='/logowanie' Component={LogIn}>
+          </Route>
+          </Routes>
+      </Router>
       <GlobalStyle />
-      <Navigation />
+      <Navigation exact path='/'/>
       <MyContext.Provider
         value={{
           search,
@@ -32,10 +40,10 @@ function App () {
           setProvince
         }}
       >
-        <SearchForm />
-        <Companies itemsPerPage={10}/>
+        <SearchForm exact path='/'/>
+        <Companies itemsPerPage={10} exact path='/'/>
       </MyContext.Provider>
-      <Footer />
+      <Footer exact path='/'/>
     </>
   )
 }

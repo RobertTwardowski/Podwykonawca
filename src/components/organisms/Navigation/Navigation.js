@@ -1,29 +1,24 @@
 import React from 'react'
-import { Wrapper, Menu, Logo,NavigationStyles} from './Navigation.styles'
+import { BrowserRouter, Link } from 'react-router-dom';
+import { Wrapper, Menu, Logo, NavigationStyles } from './Navigation.styles';
 
-function Navigation () {
+function Navigation() {
   return (
-    <NavigationStyles>
-    <Wrapper>
-      <Logo>
-        <h1>
-          Pod<span>Wykonawca</span>
-        </h1>
-      </Logo>
-      <Menu className='menu-list'>
-        <li>
-          <a href='/'>Home</a>
-        </li>
-        <li>
-          <a href='/about'>Szukaj</a>
-        </li>
-        <li>
-          <a href='/contact'>LogIn</a>
-        </li>
-      </Menu>
-    </Wrapper>
-    </NavigationStyles>
+    <BrowserRouter>
+      <NavigationStyles>
+        <Wrapper>
+            <Logo to='/'/>
+          <Menu>
+            <li>
+              <Link to='/rejestracja'>Zajerestruj się</Link>
+            </li>
+            <li>
+              <Link to='/logowanie'>Zaloguj się</Link>
+            </li>
+          </Menu>
+        </Wrapper>
+      </NavigationStyles>
+    </BrowserRouter>
   )
 }
-
-export default Navigation
+export default Navigation;

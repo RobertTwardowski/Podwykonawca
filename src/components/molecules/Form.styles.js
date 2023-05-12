@@ -8,8 +8,8 @@ export const Wrapper = styled.div`
   align-items: center;
 
   select {
-    width: 100%;
-    padding: 0.5rem;
+    width: 90%;
+    padding: 12px;
     margin: 0.5rem;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -23,11 +23,19 @@ export const Wrapper = styled.div`
     font-weight: bold;
     color: #333;
   }
+
+  button{
+    margin-top: 10px;
+    width: 90%;
+    
+  }
 `
 export const FormStyles = styled.div`
-  width: 1200px;
+  width: 600px;
+  height: 250px;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
   background: #9999;
   border-radius: 6px;

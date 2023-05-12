@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import bakcgroundImage from '../../../assets/styles/Heading.png'
+import {  Link } from 'react-router-dom';
 
 export const NavigationStyles= styled.div`
 display: flex;
@@ -10,36 +12,20 @@ export const Wrapper= styled.div`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
-width:1400px;
+width:1600px;
 align-items: center;
 `
-export const Logo = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-margin-left: 2rem;
-animation: flicker 5s infinite alternate;
-  color: #444;
-  font-weight: bold;
+export const Logo = styled(Link)`
+width: 400px;
+height: 100px;
+ background-image: url(${bakcgroundImage});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
-@keyframes flicker {
-    
-    53%, 100% {
-  
-        text-shadow:
-        0 0 4px #111,
-        0 0 20px #333;
-  
-
-    
-    }
-      20%, 24%, 55% {        
-      text-shadow: none;
-  }   
-    }
-    span{
-      color:#555;
-    }
+:hover{
+  cursor: pointer;
+}
 `
 
 export const Menu = styled.div`
@@ -48,21 +34,19 @@ flex-direction: row;
 justify-content: center;
 align-items: center;
 list-style: none;
-padding:1rem;
-margin-right: 2rem;
+margin-right: 100px;
 
-li{
-  
-  padding: 1rem;
-  color: #333;
-}
 a{
+  background-color: #f2f4f5;
   color:#333;
   text-decoration: none;
+  border-radius: 6px;
   font-weight: bold;
+  padding: 1rem;
+  margin-left: 10px;
 }
 a:hover{
   cursor:pointer;
-  color: #5dbea3;
+  color: #999;
 }
 `

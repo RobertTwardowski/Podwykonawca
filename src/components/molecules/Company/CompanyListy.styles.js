@@ -13,7 +13,7 @@ background-color: white;
 `
 
 export const SectionFirst = styled.div`
-width: 200px;
+width: 20%;
 height: 150px;
 display: flex;
 justify-content: center;
