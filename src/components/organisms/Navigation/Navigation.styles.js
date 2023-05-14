@@ -33,12 +33,13 @@ display: flex;
 flex-direction: row;
 justify-content: center;
 align-items: center;
-list-style: none;
 margin-right: 100px;
+text-decoration: none;
 
 a{
   background-color: #f2f4f5;
   color:#333;
+  list-style: none;
   text-decoration: none;
   border-radius: 6px;
   font-weight: bold;

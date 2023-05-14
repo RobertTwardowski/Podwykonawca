@@ -19,15 +19,6 @@ function App () {
 
   return (
     <>
-      <Router>
-        <Routes>
-          <Route exact path='/rejestracja' Component={Registration}></Route>
-          <Route exact path='/logowanie' Component={LogIn}>
-          </Route>
-          </Routes>
-      </Router>
-      <GlobalStyle />
-      <Navigation exact path='/'/>
       <MyContext.Provider
         value={{
           search,
@@ -40,10 +31,18 @@ function App () {
           setProvince
         }}
       >
-        <SearchForm exact path='/'/>
-        <Companies itemsPerPage={10} exact path='/'/>
+        <GlobalStyle />
+        <Router>
+       
+        
+          <Routes>
+            <Route path='/Rejestracja' Component={Registration} />
+            <Route  path='/Logowanie' Component={LogIn} />
+            <Route exact path='/'element={<><Navigation/><SearchForm /><Companies itemsPerPage={10} /> <Footer /></>}>
+            </Route>
+          </Routes>
+        </Router>
       </MyContext.Provider>
-      <Footer exact path='/'/>
     </>
   )
 }

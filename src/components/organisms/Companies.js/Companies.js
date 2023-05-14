@@ -4,7 +4,7 @@ import { CompanyList } from '../../molecules/Company/CompanyList'
 import { MyContext } from '../../../App'
 import { companyData } from '../../../Data/Data'
 
-const Companies = ({ itemsPerPage }) => {
+const Companies = ({itemsPerPage}) => {
   const { search } = useContext(MyContext)
   const { city } = useContext(MyContext)
   const { profession } = useContext(MyContext)
@@ -20,6 +20,7 @@ const Companies = ({ itemsPerPage }) => {
   useEffect(() => {
     setItemOffset(0)
   }, [city, profession])
+  
 
   useEffect(() => {
     if (!search) {
