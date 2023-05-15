@@ -1,17 +1,14 @@
 import React, { useState } from 'react'
 import { RegistrationForm, Wrapper, Container } from './Registration.styles'
 import { useNavigate } from 'react-router-dom'
-import Button from '../../atom/ButtonSearch.styles'
+import { Button } from '../../atom/ButtonMoreInfo.styles'
+
 export const Registration = () => {
-  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate('')
   const handleSubmit = event => {
     event.preventDefault()
-    console.log('Name:', name)
-    console.log('Email:', email)
-    console.log('Password:', password)
     setTimeout(() => navigate('/'), 100)
   }
 
@@ -19,12 +16,7 @@ export const Registration = () => {
     <Wrapper>
       <Container>
         <RegistrationForm onSubmit={handleSubmit}>
-          <label>Login:</label>
-          <input
-            type='text'
-            value={name}
-            onChange={event => setName(event.target.value)}
-          />
+          
 
           <label>Email:</label>
           <input
@@ -40,11 +32,9 @@ export const Registration = () => {
             onChange={event => setPassword(event.target.value)}
           />
 
-          <Button type='submit'>Submit</Button>
+          <Button type='submit'>Załóż Konto</Button>
         </RegistrationForm>
       </Container>
     </Wrapper>
   )
 }
-
-export default RegistrationForm

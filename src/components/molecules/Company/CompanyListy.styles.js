@@ -57,7 +57,7 @@ export const StyledReactPaginate = styled(ReactPaginate)`
     
     
     :hover,&.selected {
-      background-color: #9999;
+      background: #ccc; 
     }
     a {
       padding: 5px 10px;
@@ -73,6 +73,7 @@ width: 100%;
 align-self: flex-end;
 button{
   width: 25%;
+  margin: 10px;
 }
 `
 export const Rating = styled.p`

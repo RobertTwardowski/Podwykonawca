@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from './ButtonSearch.styles'
+import { Button } from './ButtonMoreInfo.styles'
 
 
 const ButtonSearch = ({ onClick }) => {
