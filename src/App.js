@@ -8,6 +8,7 @@ import Footer from './components/organisms/Footer/Footer.js'
 import { Registration } from './components/organisms/Registration/Registration.js'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LogIn } from './components/organisms/LogIn/LogIn.js'
+import CompanyAnnouncement from './components/molecules/Company/CompanyAnnouncement.js'
 
 export const MyContext = createContext()
 
@@ -18,7 +19,9 @@ function App () {
   const [province, setProvince] = useState('')
 
   return (
+
     <>
+    <GlobalStyle />
       <MyContext.Provider
         value={{
           search,
@@ -31,13 +34,13 @@ function App () {
           setProvince
         }}
       >
-        <GlobalStyle />
         <Router>
        
         
           <Routes>
             <Route path='/Rejestracja' Component={Registration} />
             <Route  path='/Logowanie' Component={LogIn} />
+            <Route path='/profile/:id' Component={CompanyAnnouncement}/>
             <Route exact path='/'element={<><Navigation/><SearchForm /><Companies itemsPerPage={10} /> <Footer /></>}>
             </Route>
           </Routes>

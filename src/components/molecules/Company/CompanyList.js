@@ -51,7 +51,7 @@ export const CompanyList = ({
                   <SectionThird>
                     {!selectedCompany || data.id !== selectedCompany.id ? (
                       <Button onClick={() => handleMoreInfoClick(data)}>
-                      <FontAwesomeIcon icon={faArrowDown}/>
+                        <FontAwesomeIcon icon={faArrowDown} />
                       </Button>
                     ) : null}
                     {selectedCompany && data.id === selectedCompany.id && (

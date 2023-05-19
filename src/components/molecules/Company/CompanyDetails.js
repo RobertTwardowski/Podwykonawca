@@ -1,8 +1,14 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
 
 const CompanyDetails = ({ data, onClose }) => {
+
+  const navigate = useNavigate('')
+  const handleSubmit = event => {
+    event.preventDefault()
+    setTimeout(() => navigate(`/profile/${data.id}`), 100)
+  }
   return (
     <div>
       <p>
@@ -16,7 +22,7 @@ const CompanyDetails = ({ data, onClose }) => {
         {data.number}
       </p>
       <Button onClick={onClose}>Zamknij</Button>
-      <Button>Przejdź do ogłoszenia</Button>
+      <Button onClick={handleSubmit}>Przejdź do ogłoszenia</Button>
     </div>
   )
 }
