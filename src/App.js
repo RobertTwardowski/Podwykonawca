@@ -41,7 +41,7 @@ function App () {
             <Route path='/Rejestracja' Component={Registration} />
             <Route  path='/Logowanie' Component={LogIn} />
             <Route path='/profile/:id' Component={CompanyAnnouncement}/>
-            <Route exact path='/'element={<><Navigation/><SearchForm /><Companies itemsPerPage={10} /> <Footer /></>}>
+            <Route exact path='/Podwykonawca'element={<><Navigation/><SearchForm /><Companies itemsPerPage={10} /> <Footer /></>}>
             </Route>
           </Routes>
         </Router>

@@ -17,7 +17,7 @@ export const LogIn = () => {
     
     console.log('name:', email)
     console.log('Password:', password)
-    setTimeout(() => navigate('/'), 100)
+    setTimeout(() => navigate('/Podwykonawca'), 100)
   }
   return (
      <Wrapper>

@@ -7,7 +7,7 @@ function Navigation() {
 
       <NavigationStyles>
         <Wrapper>
-            <Logo to='/'/>
+            <Logo to='/Podwykonawca'/>
           <Menu>
               <Link to='/Rejestracja'>Zajerestruj się</Link>
               <Link to='/Logowanie'>Zaloguj się</Link>

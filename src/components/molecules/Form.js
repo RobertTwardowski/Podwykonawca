@@ -41,7 +41,8 @@ const Form = () => {
 
   const handleSelectChange = e => {
     setSelectedProvince(e.target.value.split(','))
-    
+    console.log(selectedProvince);
+    console.log(selectedProvince.length);
   }
   const handleSelectChangeSecond = e => {
     setSelectedCity(e.target.value)
@@ -49,6 +50,7 @@ const Form = () => {
 
   const handleSelectChangeThird = e => {
     setSelectedProfession(e.target.value)
+    
   }
   return (
     <Wrapper>
@@ -61,7 +63,7 @@ const Form = () => {
             </option>
           ))}
         </select>
-        {selectedProvince ? (
+        {selectedProvince[0] ? (
           <select value={selectedCity} onChange={handleSelectChangeSecond}>
             <option value=''>Wybierz Miasto...</option>
             {cities.map(cities => (
@@ -73,20 +75,20 @@ const Form = () => {
             <option>Wybierz Miasto...</option>
           </select>
         )}
-        {selectedCity && selectedProvince ? (
-          <select value={selectedProfession} onChange={handleSelectChangeThird}>
-            <option value=''>Wybierz Specjalizację...</option>
-            {professions.map(professions => (
-              <option key={professions} value={professions}>
-                {professions}
-              </option>
-            ))}
-          </select>
-        ) : (
-          <select style={{ cursor: 'not-allowed', color: '#9999' }}>
-            <option>Wybierz Specjalizacja...</option>
-          </select>
-        )}
+     {selectedCity && selectedProvince[0]  ? (
+  <select value={selectedProfession} onChange={handleSelectChangeThird}>
+    <option value=''>Wybierz Specjalizację...</option>
+    {professions.map(profession => (
+      <option key={profession} value={profession}>
+        {profession}
+      </option>
+    ))}
+  </select>
+) : (
+  <select style={{ cursor: 'not-allowed', color: '#9999' }}>
+    <option>Wybierz Specjalizację...</option>
+  </select>
+)}
 
         <ButtonSearch onClick={handleButtonClick} />
       </FormStyles>

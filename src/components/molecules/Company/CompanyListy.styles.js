@@ -25,7 +25,6 @@ export const SectionSecond = styled.div`
 position: relative;
 width: 100%;
 height: 100%;
-text-align: center;
 span{
     font-size: 1rem;
     font-weight: bold;
@@ -35,7 +34,7 @@ h2{
 }
 
 p{
-  font-weight: bold;
+  font-size: 20px;
   padding: 10px;
 }
 `
@@ -80,4 +79,14 @@ export const Rating = styled.p`
 position: absolute;
 right:0;
 bottom:0;
+`
+export const ErrorSection= styled.span`
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+text-align: center;
+height: 300px;
+font-size: 40px;
+color: #999;
 `

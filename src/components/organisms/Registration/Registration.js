@@ -9,7 +9,7 @@ export const Registration = () => {
   const navigate = useNavigate('')
   const handleSubmit = event => {
     event.preventDefault()
-    setTimeout(() => navigate('/'), 100)
+    setTimeout(() => navigate('/Podwykonawca'), 100)
   }
 
   return (
@@ -24,7 +24,6 @@ export const Registration = () => {
             value={email}
             onChange={event => setEmail(event.target.value)}
           />
-
           <label>Password:</label>
           <input
             type='password'

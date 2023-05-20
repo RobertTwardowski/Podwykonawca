@@ -84,7 +84,7 @@ function CompanyAnnouncement() {
               <option value="4">4</option>
               <option value="5">5</option>
             </select>
-            <button onClick={handleCommentSubmit}>Dodaj komentarz</button>
+            <Button onClick={handleCommentSubmit}>Dodaj komentarz</Button>
           </div>
         </div>
       </SectionComment>

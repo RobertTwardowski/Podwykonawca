@@ -6,12 +6,13 @@ import {
   StyledReactPaginate,
   SectionStyles,
   Rating,
-  SectionThird
+  SectionThird,ErrorSection 
 } from './CompanyListy.styles'
 import CompanyDetails from './CompanyDetails'
 import { MyContext } from '../../../App'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons'
+
 
 export const CompanyList = ({
   currentItems,
@@ -27,6 +28,7 @@ export const CompanyList = ({
   const handleMoreInfoClick = data => {
     setSelectedCompany(data)
   }
+
   if (!search) {
     return (
       <>
@@ -61,7 +63,6 @@ export const CompanyList = ({
                       />
                     )}
                     <Rating>
-                      <span>Ocena:</span>
                       <span style={colorStyle}>{data.rating}/5</span>
                     </Rating>
                   </SectionThird>
@@ -85,7 +86,7 @@ export const CompanyList = ({
     if (professionChosen.length === 0) {
       return (
         <SectionStyles>
-          <h1>nie ma ofert</h1>
+          <ErrorSection >Przepraszamy, obecnie nie ma dostępnych ofert lub nastąpił błąd w wyborze formularza. Prosimy spróbować ponownie.</ErrorSection >
         </SectionStyles>
       )
     }
@@ -107,9 +108,7 @@ export const CompanyList = ({
                   </SectionFirst>
                   <SectionSecond>
                     <h2>{data.name}</h2>
-                    <p>
-                      <span>Specjalizacja: </span> {data.professions}
-                    </p>
+                    <p>{data.professions}</p>
                     <SectionThird>
                       {!selectedCompany || data.id !== selectedCompany.id ? (
                         <Button onClick={() => handleMoreInfoClick(data)}>
