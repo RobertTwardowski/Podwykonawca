@@ -9,21 +9,30 @@ justify-content: center;
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 600px;
+  height: 1000px;
   width: 70%;
+  background-color: #f2f4f5;
+  border-radius: 6px;
+  margin-top: 20px;
+`
+
+export const CityProfession=styled.div`
+display: flex;
+justify-content: space-around;
+
+p{
+  padding: 20px;
+  font-size: 20px;
+}
 `
 
 export const Title = styled.div`
-width: 25%;
-height: 25%;
-margin: 20px;
+height: 10%;
+margin-top: 20px;
 `
 export const About = styled.div`
-width: 60%;
-height: 25%;
+
 
 p{
     margin: 10px;
@@ -39,12 +48,13 @@ flex-direction: column;
 text-align: center;
 align-items: center;
 background-color: #d4ebf2;
+border-radius: 6px;
 `
 export const CommentAdd=styled.div`
 display: flex;
 justify-content: center;
 flex-direction: column;
-background-color: #f2f4f5;
+
 margin: 20px;
 width: 90%;
 
@@ -60,7 +70,6 @@ input,select{
 
 export const CommentInput=styled.textarea`
 height: 200px;
-background-color: #f2f4f5;
 margin: 10px;
 font-size: 16px;
 border-radius: 6px;
@@ -72,7 +81,7 @@ margin:20px;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-background-color: #f2f4f5;
+background-color: white;
 border-radius: 6px;
 p{
   padding: 10px;

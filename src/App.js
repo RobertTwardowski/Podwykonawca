@@ -1,5 +1,5 @@
-import React, { useState, createContext } from 'react'
-import './App.styles.js'
+import React, { useEffect, useState, createContext } from 'react'
+import { Spinner, ErrorSection } from './App.styles.js'
 import Navigation from './components/organisms/Navigation/Navigation'
 import { GlobalStyle } from './assets/styles/GlobalStyles'
 import SearchForm from './components/organisms/SearchForm/SearchForm.js'
@@ -9,6 +9,9 @@ import { Registration } from './components/organisms/Registration/Registration.j
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { LogIn } from './components/organisms/LogIn/LogIn.js'
 import CompanyAnnouncement from './components/molecules/Company/CompanyAnnouncement.js'
+import { companyData } from './Data/Data.js' // Import danych
+
+
 
 export const MyContext = createContext()
 
@@ -17,11 +20,23 @@ function App () {
   const [city, setCity] = useState('')
   const [profession, setProfession] = useState('')
   const [province, setProvince] = useState('')
+  const [isLoadingCompanies, setIsLoadingCompanies] = useState(true)
+ 
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchData = () => {
+    // Symulacja pobierania danych z bazy danych
+    setTimeout(() => {
+      setIsLoadingCompanies(false)
+    }, 3000)
+  }
 
   return (
-
     <>
-    <GlobalStyle />
+      <GlobalStyle />
       <MyContext.Provider
         value={{
           search,
@@ -35,14 +50,33 @@ function App () {
         }}
       >
         <Router>
-       
-        
           <Routes>
             <Route path='/Rejestracja' Component={Registration} />
-            <Route  path='/Logowanie' Component={LogIn} />
-            <Route path='/profile/:id' Component={CompanyAnnouncement}/>
-            <Route exact path='/Podwykonawca'element={<><Navigation/><SearchForm /><Companies itemsPerPage={10} /> <Footer /></>}>
-            </Route>
+            <Route path='/Logowanie' Component={LogIn} />
+            <Route path='/profile/:id' Component={CompanyAnnouncement} />
+            <Route
+              exact
+              path='/Podwykonawca'
+              element={
+                <>
+                  <Navigation />
+                  <SearchForm />
+                  {isLoadingCompanies ? (
+                    <ErrorSection>
+                      <Spinner></Spinner>Loading...
+                    </ErrorSection>
+                  ) : (
+                    <>
+                      <Companies
+                        companiesData={companyData}
+                        itemsPerPage={10}
+                      />
+                    </>
+                  )}
+                  <Footer />
+                </>
+              }
+            />
           </Routes>
         </Router>
       </MyContext.Provider>

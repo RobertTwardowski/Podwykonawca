@@ -9,7 +9,8 @@ import {
   SectionComment,
   Section,
   CommentInput,
-  Comments
+  Comments,CityProfession
+
 } from './CompanyAnnouncement.styles'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
 
@@ -60,8 +61,12 @@ function CompanyAnnouncement () {
         <Title>
           <h1>{Company.name}</h1>
         </Title>
-        <p>{Company.professions}</p>
-        <p>{Company.cities}</p>
+        <CityProfession>
+          <p>Specjalizacja: {Company.professions}</p>
+          <p>miasto: {Company.cities}</p>
+          <p>numer: {Company.number}</p>
+        </CityProfession>
+
         <About>
           <p>{Company.about}</p>
           <p>{Company.about}</p>
