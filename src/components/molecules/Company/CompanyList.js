@@ -27,6 +27,7 @@ export const CompanyList = ({
 
   const handleMoreInfoClick = data => {
     setSelectedCompany(data)
+    console.log(data.logo);
   }
 
   if (!search) {
@@ -42,8 +43,8 @@ export const CompanyList = ({
                 : { color: '#B22222' }
             return (
               <SectionStyles key={data.id}>
-                <SectionFirst style={{ backgroundColor: data.logo }}>
-                  Logo
+                <SectionFirst>
+                  <img src={data.logo} alt=''></img>
                 </SectionFirst>
                 <SectionSecond>
                   <h2>{data.name}</h2>
@@ -103,9 +104,9 @@ export const CompanyList = ({
                   : { color: '#B22222' }
               return (
                 <SectionStyles key={data.id}>
-                  <SectionFirst style={{ backgroundColor: data.logo }}>
-                    Logo
-                  </SectionFirst>
+                 <SectionFirst>
+                  <img src={data.logo} alt=''></img>
+                </SectionFirst>
                   <SectionSecond>
                     <h2>{data.name}</h2>
                     <p>{data.professions}</p>
