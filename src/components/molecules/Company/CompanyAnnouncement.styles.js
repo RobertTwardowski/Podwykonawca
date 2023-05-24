@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 1000px;
+  height: 1500px;
   width: 70%;
   background-color: #f2f4f5;
   border-radius: 6px;
@@ -24,12 +24,23 @@ justify-content: space-around;
 p{
   padding: 20px;
   font-size: 20px;
+  font-weight: bold;
 }
 `
 
 export const Title = styled.div`
-height: 10%;
+
 margin-top: 20px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 30px;
+text-align: center;
+
+img{
+  width: 200px;
+  height: 200px;
+}
 `
 export const About = styled.div`
 
@@ -37,6 +48,30 @@ export const About = styled.div`
 p{
     margin: 10px;
     font-size: 20px;
+}
+`
+export const CarouselWrapper=styled.div`
+ max-width: 100%;
+  overflow: hidden;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 16px;
+
+`
+export const CarouselImage= styled.img`
+width: 100%;
+  height: auto;
+  margin: 16px;
+`
+export const ImageSection=styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+
+img{
+  width: 700px;
+  height: 400px;
 }
 `
 export const SectionComment=styled.div`
@@ -61,9 +96,8 @@ width: 90%;
 
 input,select{
   height: 30px;
-  
+  border: none;
   margin: 10px;
-  border-radius: 6px;
   font-size: 16px;
 }
 `

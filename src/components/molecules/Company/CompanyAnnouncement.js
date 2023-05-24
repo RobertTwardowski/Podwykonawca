@@ -9,18 +9,23 @@ import {
   SectionComment,
   Section,
   CommentInput,
-  Comments,CityProfession
-
+  Comments,
+  CityProfession,
+  CarouselWrapper,
+  CarouselImage,
+  ImageSection
 } from './CompanyAnnouncement.styles'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
+import Slider from 'react-slick'
 
 function CompanyAnnouncement () {
   const { id } = useParams()
   const Company = companyData.find(Company => Company.id == id)
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
-  const [rating, setRating] = useState('') // Updated to use a select option
+  const [rating, setRating] = useState('')
   const [commentIndex, setCommentIndex] = useState(0)
+  const [selectedPhoto, setSelectedPhoto] = useState(null)
 
   const visibleComments = comments.slice(commentIndex, commentIndex + 5)
 
@@ -50,6 +55,9 @@ function CompanyAnnouncement () {
       setRating('')
     }
   }
+  const handlePhotoClick = photo => {
+    setSelectedPhoto(photo)
+  }
 
   const loadMoreComments = () => {
     setCommentIndex(prevIndex => prevIndex + 5)
@@ -59,6 +67,7 @@ function CompanyAnnouncement () {
     <Section>
       <Wrapper>
         <Title>
+          <img src={Company.logo} alt=''></img>
           <h1>{Company.name}</h1>
         </Title>
         <CityProfession>
@@ -72,6 +81,22 @@ function CompanyAnnouncement () {
           <p>{Company.about}</p>
           <p>{Company.about}</p>
         </About>
+        <CarouselWrapper>
+          {companyData.slice(0, 5).map((company, index) => (
+            <CarouselImage
+              key={index}
+              src={company.logo}
+              alt={`Company Logo ${index}`}
+              onClick={() => handlePhotoClick(company.logo)}
+            />
+          ))}
+        </CarouselWrapper>
+        {selectedPhoto && (
+          <ImageSection>
+            <h2>Wybrane zdjęcie:</h2>
+            <img src={selectedPhoto} alt='Selected Photo' />
+          </ImageSection>
+        )}
       </Wrapper>
       <SectionComment>
         {visibleComments.map((comment, index) => (

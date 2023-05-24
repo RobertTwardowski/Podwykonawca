@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker/locale/pl'
 
 export const companyData = []
 
-for (let i = 0; i < 20000; i++) {
+for (let i = 0; i < 10000; i++) {
   const companyName = faker.company.name()
   const city = faker.address.city()
   const province = faker.address.state()
