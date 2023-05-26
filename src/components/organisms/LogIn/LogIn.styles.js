@@ -32,7 +32,7 @@ export const LogInForm = styled.form`
   font-weight: bold;
 
   input {
-    border: none;
+    
     border-radius: 6px;
     background-color: #f2f4f5;
     width: 90%;
@@ -40,4 +40,15 @@ export const LogInForm = styled.form`
     font-size: 30px;
     margin: 20px;
   }
+
+`
+
+export const EmailInput = styled.input`
+
+  border-color: ${props => (props.empty && props.clicked ? '#FF4136' : 'initial')};
+`;
+
+export const PasswordInput = styled.input`
+
+  border-color: ${props => (props.empty && props.clicked ? '#FF4136' : 'initial')};
 `

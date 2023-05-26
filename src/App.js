@@ -11,8 +11,6 @@ import { LogIn } from './components/organisms/LogIn/LogIn.js'
 import CompanyAnnouncement from './components/molecules/Company/CompanyAnnouncement.js'
 import { companyData } from './Data/Data.js' // Import danych
 
-
-
 export const MyContext = createContext()
 
 function App () {
@@ -21,67 +19,76 @@ function App () {
   const [profession, setProfession] = useState('')
   const [province, setProvince] = useState('')
   const [isLoadingCompanies, setIsLoadingCompanies] = useState(true)
- 
+  const [data, setData] = useState(null)
 
   useEffect(() => {
     fetchData()
   }, [])
 
+  console.log(data);
+
   const fetchData = () => {
     // Symulacja pobierania danych z bazy danych
     setTimeout(() => {
       setIsLoadingCompanies(false)
-    }, 3000)
+    }, 2000)
   }
-
-  return (
-    <>
-      <GlobalStyle />
-      <MyContext.Provider
-        value={{
-          search,
-          setSearch,
-          profession,
-          setProfession,
-          city,
-          setCity,
-          province,
-          setProvince
-        }}
-      >
-        <Router>
-          <Routes>
-            <Route path='/Rejestracja' Component={Registration} />
-            <Route path='/Logowanie' Component={LogIn} />
-            <Route path='/profile/:id' Component={CompanyAnnouncement} />
-            <Route
-              exact
-              path='/Podwykonawca'
-              element={
-                <>
-                  <Navigation />
-                  <SearchForm />
-                  {isLoadingCompanies ? (
-                    <ErrorSection>
-                      <Spinner></Spinner>Loading...
-                    </ErrorSection>
-                  ) : (
-                    <>
-                      <Companies
-                        companiesData={companyData}
-                        itemsPerPage={10}
-                      />
-                    </>
-                  )}
-                  <Footer />
-                </>
-              }
-            />
-          </Routes>
-        </Router>
-      </MyContext.Provider>
-    </>
-  )
-}
+  const handleDataChange = newData => {
+    setData(newData)}
+    return (
+      <>
+        <GlobalStyle />
+        <MyContext.Provider
+          value={{
+            search,
+            setSearch,
+            profession,
+            setProfession,
+            city,
+            setCity,
+            province,
+            setProvince
+          }}
+        >
+          <Router>
+            <Routes>
+              <Route
+                path='/Rejestracja'
+                element={<Registration onDataChange={handleDataChange} />}
+              />
+              <Route
+        path="/Logowanie"
+        element={ <LogIn data={data} />}
+      />
+              <Route path='/profile/:id' Component={CompanyAnnouncement} />
+              <Route
+                exact
+                path='/Podwykonawca'
+                element={
+                  <>
+                    <Navigation />
+                    <SearchForm />
+                    {isLoadingCompanies ? (
+                      <ErrorSection>
+                        <Spinner></Spinner>Loading...
+                      </ErrorSection>
+                    ) : (
+                      <>
+                        <Companies
+                          companiesData={companyData}
+                          itemsPerPage={10}
+                        />
+                      </>
+                    )}
+                    <Footer />
+                  </>
+                }
+              />
+            </Routes>
+          </Router>
+        </MyContext.Provider>
+      </>
+    )
+  }
 
 export default App

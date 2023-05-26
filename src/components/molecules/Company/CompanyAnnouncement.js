@@ -16,7 +16,7 @@ import {
   ImageSection
 } from './CompanyAnnouncement.styles'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
-import Slider from 'react-slick'
+
 
 function CompanyAnnouncement () {
   const { id } = useParams()

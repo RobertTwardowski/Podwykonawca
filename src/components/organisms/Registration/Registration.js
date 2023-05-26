@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { RegistrationForm,PasswordInput,EmailInput, Wrapper, Container } from './Registration.styles';
+import { RegistrationForm, PasswordInput, EmailInput, Wrapper, Container } from './Registration.styles';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../../atom/ButtonMoreInfo.styles';
 
-
-
-export const Registration = () => {
+export const Registration = ({ onDataChange }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [clicked, setClicked] = useState(false);
-  const navigate = useNavigate('');
+  const navigate = useNavigate();
 
-  const handleSubmit = event => {
+  const handleRegistration = event => {
     event.preventDefault();
     setClicked(true);
 
@@ -19,13 +17,16 @@ export const Registration = () => {
       return;
     }
 
+    const data = { email, password }; // Dane do przekazania
+    onDataChange(data);
+
     setTimeout(() => navigate('/Podwykonawca'), 100);
   };
 
   return (
     <Wrapper>
       <Container>
-        <RegistrationForm onSubmit={handleSubmit}>
+        <RegistrationForm onSubmit={handleRegistration}>
           <label>Email:</label>
           <EmailInput
             type='email'
@@ -44,7 +45,7 @@ export const Registration = () => {
             clicked={clicked}
           />
 
-          <Button type='submit' onClick={() => setClicked(true)}>
+          <Button type='submit' onClick={handleRegistration}>
             Załóż Konto
           </Button>
         </RegistrationForm>
