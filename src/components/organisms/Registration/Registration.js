@@ -7,6 +7,7 @@ export const Registration = ({ onDataChange }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [clicked, setClicked] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
   const navigate = useNavigate();
 
   const handleRegistration = event => {
@@ -20,12 +21,28 @@ export const Registration = ({ onDataChange }) => {
     const data = { email, password }; // Dane do przekazania
     onDataChange(data);
 
-    setTimeout(() => navigate('/Podwykonawca'), 100);
+    if(email !== '' && password !== ''){
+      setShowConfirmation(true);
+    }
   };
 
+  const handelLogIn = event =>{
+    event.preventDefault()
+    navigate('/Logowanie')
+  }
+  
   return (
     <Wrapper>
       <Container>
+      {showConfirmation ? (
+         <RegistrationForm>
+         <p>Rejestracja powiodła się!</p>
+         <p>Kliknij OK aby przejść do logowania.</p>
+         <Button onClick={handelLogIn}>
+            OK
+          </Button>
+       </RegistrationForm>
+     ) :(
         <RegistrationForm onSubmit={handleRegistration}>
           <label>Email:</label>
           <EmailInput
@@ -45,10 +62,10 @@ export const Registration = ({ onDataChange }) => {
             clicked={clicked}
           />
 
-          <Button type='submit' onClick={handleRegistration}>
+          <Button type='submit' onSubmit={handleRegistration}>
             Załóż Konto
           </Button>
-        </RegistrationForm>
+        </RegistrationForm>)}
       </Container>
     </Wrapper>
   );

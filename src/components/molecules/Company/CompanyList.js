@@ -27,7 +27,6 @@ export const CompanyList = ({
 
   const handleMoreInfoClick = data => {
     setSelectedCompany(data)
-    console.log(data.logo);
   }
 
   if (!search) {

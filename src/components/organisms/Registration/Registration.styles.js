@@ -40,7 +40,10 @@ export const RegistrationForm = styled.form`
     font-size: 30px;
     margin: 20px;
   }
-
+p{
+  margin-bottom: 16px;
+  font-size: 20px;
+}
 `
 
 export const EmailInput = styled.input`
