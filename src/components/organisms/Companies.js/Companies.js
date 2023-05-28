@@ -3,6 +3,7 @@ import { CompaniesStyles, Wrapper} from './Companies.styles'
 import { CompanyList } from '../../molecules/Company/CompanyList'
 import { MyContext } from '../../../App'
 import { companyData } from '../../../Data/Data'
+import {Loader} from '../../atom/Loader'
 
 const Companies = ({itemsPerPage}) => {
   const { search } = useContext(MyContext)
@@ -17,6 +18,11 @@ const Companies = ({itemsPerPage}) => {
   const [currentItems, setCurrentItems] = useState(null)
   const [pageCount, setPageCount] = useState(0)
   const [itemOffset, setItemOffset] = useState(0)
+  const [loader,setLodaer] =useState(false)
+
+    useEffect(()=>{
+      setTimeout(()=>{setLodaer(true)},1500)
+    })
   useEffect(() => {
     setItemOffset(0)
   }, [city, profession])
@@ -47,13 +53,14 @@ const Companies = ({itemsPerPage}) => {
   return (
     <CompaniesStyles>
       <Wrapper>
-          <CompanyList
+        {!loader ? (<Loader/>) :(<CompanyList
             currentItems={currentItems}
             handlePageClick={handlePageClick}
             professionChosen={professionChosen}
             handlePageClickProfession={handlePageClickProfession}
             pageCount={pageCount}
-          />
+          />)}
+          
       </Wrapper>
     </CompaniesStyles>
   )

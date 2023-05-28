@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect,useContext} from 'react'
 import { useParams } from 'react-router-dom'
 import { companyData, comments } from '../../../Data/Data'
 import {
@@ -13,10 +13,12 @@ import {
   CityProfession,
   CarouselWrapper,
   CarouselImage,
-  ImageSection
+  ImageSection,Comment
 } from './CompanyAnnouncement.styles'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
-
+import {Loader} from '../../atom/Loader'
+import { MyContext } from '../../../App'
+import { useNavigate } from 'react-router-dom'
 
 function CompanyAnnouncement () {
   const { id } = useParams()
@@ -26,8 +28,20 @@ function CompanyAnnouncement () {
   const [rating, setRating] = useState('')
   const [commentIndex, setCommentIndex] = useState(0)
   const [selectedPhoto, setSelectedPhoto] = useState(null)
-
   const visibleComments = comments.slice(commentIndex, commentIndex + 5)
+  const [loader, setLodaer] = useState(false)
+  const {logIn} = useContext(MyContext)
+  const navigate = useNavigate('')
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLodaer(true)
+    }, 1500)
+  })
+  const handleLogIn = event => {
+    event.preventDefault()
+    navigate('/Logowanie')
+  }
 
   const handleNameChange = e => {
     setName(e.target.value)
@@ -64,10 +78,11 @@ function CompanyAnnouncement () {
   }
 
   return (
-    <Section>
-      <Wrapper>
+    <Section>{!loader ?(<Loader/>):
+    (<>
+    <Wrapper>
         <Title>
-          <img src={Company.logo} alt=''></img>
+          <img src={Company.logo} alt=''/>
           <h1>{Company.name}</h1>
         </Title>
         <CityProfession>
@@ -82,7 +97,7 @@ function CompanyAnnouncement () {
           <p>{Company.about}</p>
         </About>
         <CarouselWrapper>
-          {companyData.slice(0, 5).map((company, index) => (
+          {companyData.slice(5, 10).map((company, index) => (
             <CarouselImage
               key={index}
               src={company.logo}
@@ -93,25 +108,25 @@ function CompanyAnnouncement () {
         </CarouselWrapper>
         {selectedPhoto && (
           <ImageSection>
-            <h2>Wybrane zdjęcie:</h2>
             <img src={selectedPhoto} alt='Selected Photo' />
           </ImageSection>
         )}
       </Wrapper>
       <SectionComment>
-        {visibleComments.map((comment, index) => (
-          <Comments key={index}>
+        <Comments> {visibleComments.map((comment, index) => (
+          <Comment key={index}>
             <p>{comment.commentName}</p>
             <p>{comment.commnet}</p>
             <p>{comment.rating}</p>
-          </Comments>
+          </Comment>
         ))}
 
+       
         {comments.length > commentIndex + 5 && (
           <Button onClick={loadMoreComments}>Pokaż kolejne komentarze</Button>
-        )}
-
-        <CommentAdd>
+        )}</Comments>
+{!logIn ? (<CommentAdd><p>Zaloguj się aby dodać ocene i komentarz</p><Button onClick={handleLogIn}>Zaloguj się</Button></CommentAdd>):
+       ( <CommentAdd>
           <input
             type='text'
             placeholder='Imię'
@@ -135,8 +150,9 @@ function CompanyAnnouncement () {
           />
 
           <Button onClick={handleCommentSubmit}>Dodaj komentarz</Button>
-        </CommentAdd>
-      </SectionComment>
+        </CommentAdd>)}
+      </SectionComment></>)}
+      
     </Section>
   )
 }

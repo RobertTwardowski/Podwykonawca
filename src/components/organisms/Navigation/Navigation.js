@@ -1,20 +1,24 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import { Wrapper, Menu, Logo, NavigationStyles } from './Navigation.styles';
+import { Link } from 'react-router-dom'
+import { Wrapper, Menu, Logo, NavigationStyles } from './Navigation.styles'
 
-function Navigation() {
+function Navigation ({data}) {
   return (
-
-      <NavigationStyles>
-        <Wrapper>
-            <Logo to='/Podwykonawca'/>
+    <NavigationStyles>
+      <Wrapper>
+        <Logo to='/Podwykonawca' />
+        {data ? (
           <Menu>
-              <Link to='/Rejestracja'>Zajerestruj się</Link>
-              <Link to='/Logowanie'>Zaloguj się</Link>
+            <Link to='/Konto'>Moje Konto</Link>
           </Menu>
-        </Wrapper>
-      </NavigationStyles>
-
+        ) : (
+          <Menu>
+            <Link to='/Rejestracja'>Zajerestruj się</Link>
+            <Link to='/Logowanie'>Zaloguj się</Link>
+          </Menu>
+        )}
+      </Wrapper>
+    </NavigationStyles>
   )
 }
-export default Navigation;
+export default Navigation

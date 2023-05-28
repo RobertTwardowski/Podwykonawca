@@ -41,6 +41,17 @@ export const LogInForm = styled.form`
     margin: 20px;
   }
 
+  p{
+  margin: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+button{
+  margin:20px;
+}
+`
+export const Attention =styled.p`
+color: #dc2f2f;
 `
 
 export const EmailInput = styled.input`
@@ -52,3 +63,6 @@ export const PasswordInput = styled.input`
 
   border-color: ${props => (props.empty && props.clicked ? '#FF4136' : 'initial')};
 `
+
+
+

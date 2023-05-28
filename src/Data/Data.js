@@ -9,7 +9,7 @@ for (let i = 0; i < 10000; i++) {
   const professions = faker.commerce.department()
   const number = faker.phone.number()
   const about = faker.lorem.sentences(10)
-  const logo = `https://picsum.photos/200/200?random=${i}`
+  const logo = `https://picsum.photos/800/600?random=${i}`
   const rating = faker.datatype
     .number({
       min: 1,

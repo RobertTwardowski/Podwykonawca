@@ -41,8 +41,12 @@ export const RegistrationForm = styled.form`
     margin: 20px;
   }
 p{
-  margin-bottom: 16px;
+  margin-top: 16px;
   font-size: 20px;
+  text-align: center;
+}
+button{
+  margin-top:20px;
 }
 `
 
