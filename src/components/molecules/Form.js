@@ -41,8 +41,6 @@ const Form = () => {
 
   const handleSelectChange = e => {
     setSelectedProvince(e.target.value.split(','))
-    console.log(selectedProvince);
-    console.log(selectedProvince.length);
   }
   const handleSelectChangeSecond = e => {
     setSelectedCity(e.target.value)

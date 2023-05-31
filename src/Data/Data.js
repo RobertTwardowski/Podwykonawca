@@ -48,3 +48,219 @@ for (let i = 0; i < 20; i++) {
     rating: rating
   })
 }
+
+export const provinces = [
+  {
+    id: 1,
+    name: 'Dolnośląskie',
+    cities: [
+      'Wrocław',
+      'Wałbrzych',
+      'Legnica',
+      'Głogów',
+      'Jelenia Góra'
+    ]
+  },
+  {
+    id: 2,
+    name: 'Kujawsko-Pomorskie',
+    cities: [
+      'Bydgoszcz',
+      'Toruń',
+      'Włocławek',
+      'Grudziądz',
+      'Inowrocław'
+    ]
+  },
+  {
+    id: 3,
+    name: 'Lubelskie',
+    cities: [
+      'Lublin',
+      'Chełm',
+      'Zamość',
+      'Biała Podlaska',
+      'Puławy'
+    ]
+  },
+  {
+    id: 4,
+    name: 'Lubuskie',
+    cities: [
+      'Gorzów Wielkopolski',
+      'Zielona Góra',
+      'Nowa Sól',
+      'Świebodzin',
+      'Kostrzyn nad Odrą'
+    ]
+  },
+  {
+    id: 5,
+    name: 'Łódzkie',
+    cities: [
+      'Łódź',
+      'Piotrków Trybunalski',
+      'Skierniewice',
+      'Sieradz',
+      'Zgierz'
+    ]
+  },
+  {
+    id: 6,
+    name: 'Małopolskie',
+    cities: [
+      'Kraków',
+      'Tarnów',
+      'Nowy Sącz',
+      'Oświęcim',
+      'Gorlice'
+    ]
+  },
+  {
+    id: 7,
+    name: 'Mazowieckie',
+    cities: [
+      'Warszawa',
+      'Radom',
+      'Płock',
+      'Siedlce',
+    ]
+  },
+  {
+    id: 8,
+    name: 'Opolskie',
+    cities: [
+      'Opole',
+      'Kędzierzyn-Koźle',
+      'Nysa',
+      'Brzeg',
+      'Kluczbork'
+    ]
+  },
+  {
+    id: 9,
+    name: 'Podkarpackie',
+    cities: [
+      'Rzeszów',
+      'Przemyśl',
+      'Tarnobrzeg',
+      'Mielec',
+      'Krosno'
+    ]
+  },
+  {
+    id: 10,
+    name: 'Podlaskie',
+    cities: ['Białystok', 'Suwałki', 'Łomża']
+  },
+  {
+    id: 11,
+    name: 'Pomorskie',
+    cities: [
+      'Gdańsk',
+      'Gdynia',
+      'Sopot',
+      'Tczew',
+      'Wejherowo'
+    ]
+  },
+  {
+    id: 12,
+    name: 'Śląskie',
+    cities: [
+      'Katowice',
+      'Gliwice',
+      'Zabrze',
+      'Bytom',
+      'Ruda Śląska'
+    ]
+  },
+  {
+    id: 13,
+    name: 'Świętokrzyskie',
+    cities: [
+      'Kielce',
+      'Ostrowiec Świętokrzyski',
+      'Starachowice',
+      'Sandomierz',
+      'Skarżysko-Kamienna'
+    ]
+  },
+  {
+    id: 14,
+    name: 'Warmińsko-Mazurskie',
+    cities: [
+      'Olsztyn',
+      'Elbląg',
+      'Ełk',
+      'Ostróda',
+      'Szczytno'
+    ]
+  },
+  {
+    id: 15,
+    name: 'Wielkopolskie',
+    cities: [
+      'Poznań',
+      'Kalisz',
+      'Konin',
+      'Ostrów Wielkopolski',
+      'Gniezno'
+    ]
+  },
+  {
+    id: 16,
+    name: 'Zachodniopomorskie',
+    cities: [
+      'Szczecin',
+      'Koszalin',
+      'Stargard',
+      'Kołobrzeg',
+      'Police'
+    ]
+  }
+]
+
+export const professions = [
+  {
+    id: 1,
+    name: "Architekt",
+  },
+  {
+    id: 2,
+    name: "Inżynier budownictwa",
+  },
+  {
+    id: 3,
+    name: "Projektant konstrukcji",
+  },
+  {
+    id: 4,
+    name: "Brygadzista budowlany",
+  },
+  {
+    id: 5,
+    name: "Elektryk budowlany",
+  },
+  {
+    id: 6,
+    name: "Hydraulik",
+  },
+  {
+    id: 7,
+    name: "Cieśla",
+  },
+  {
+    id: 8,
+    name: "Wykończenie",
+  },
+  {
+    id: 9,
+    name: "Tynkarz",
+  },
+  {
+    id: 10,
+    name: "Glazurnik",
+  },
+];
+
