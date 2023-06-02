@@ -1,20 +1,22 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
 import { Loader } from '../../atom/Loader'
 import { Wrapper } from './Account.styles'
 import { AccountAd } from './AccountAd'
+import { MyContext } from '../../../App'
 
 export const Account = () => {
-  const [loader, setLodaer] = useState(false)
+  const [loader, setLoader] = useState(false)
   const [add, setAdd] = useState(false)
+  const { announcement } = useContext(MyContext)
 
   useEffect(() => {
     setTimeout(() => {
-      setLodaer(true)
+      setLoader(true)
     }, 1500)
-  })
+  }, [])
 
-  const handelClickAdd = () => {
+  const handleClickAdd = () => {
     setAdd(true)
   }
 
@@ -24,14 +26,20 @@ export const Account = () => {
         <Loader />
       ) : (
         <>
-          {!add ? (
-            <Wrapper>
-              <h2>Brak Aktywnych Ogłoszeń.</h2>
-              <h3>Kliknij w przycisk aby dodać ogłoszenie.</h3>
-              <Button onClick={handelClickAdd}>Dodaj Ogłoszenie</Button>
-            </Wrapper>
+          {announcement ? (
+            <p>dodano</p>
           ) : (
-            <AccountAd></AccountAd>
+            <>
+              {!add ? (
+                <Wrapper>
+                  <h2>Brak Aktywnych Ogłoszeń.</h2>
+                  <h3>Kliknij w przycisk, aby dodać ogłoszenie.</h3>
+                  <Button onClick={handleClickAdd}>Dodaj Ogłoszenie</Button>
+                </Wrapper>
+              ) : (
+                <AccountAd />
+              )}
+            </>
           )}
         </>
       )}

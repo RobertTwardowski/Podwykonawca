@@ -1,169 +1,311 @@
-import React, { useState } from 'react'
-import { provinces } from '../../../Data/Data'
-import { professions } from '../../../Data/Data'
+import React, { useState,useContext } from 'react';
+import { provinces } from '../../../Data/Data';
+import { professions } from '../../../Data/Data';
+import {
+  Wrapper,
+  Images,
+  Image,
+  ContainerImage,
+  Checkbox,
+  Add,
+  Error,
+} from './AccountAd.styles';
+import { Button } from '../../atom/ButtonMoreInfo.styles';
+import { MyContext } from '../../../App'
 
 export const AccountAd = () => {
-  const [selectedProvince, setSelectedProvince] = useState('')
-  const [selectedCity, setSelectedCity] = useState('')
-  const [selectedProfession, setSelectedProfession] = useState('')
-  const [companyName, setCompanyName] = useState('')
-  const [phoneNumber, setPhoneNumber] = useState('')
-  const [shortDescription, setShortDescription] = useState('')
-  const [longDescription, setLongDescription] = useState('')
-  const [images, setImages] = useState([])
-  const [addImages, setAddImages] = useState(false)
+  const [selectedProvince, setSelectedProvince] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+  const [selectedProfession, setSelectedProfession] = useState('');
+  const [companyName, setCompanyName] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [shortDescription, setShortDescription] = useState('');
+  const [longDescription, setLongDescription] = useState('');
+  const [images, setImages] = useState([]);
+  const [addImages, setAddImages] = useState(false);
+  const [errors, setErrors] = useState({
+    selectedProvince: false,
+    selectedCity: false,
+    selectedProfession: false,
+    companyName: false,
+    phoneNumber: false,
+    shortDescription: false,
+    longDescription: false,
+  });
+  const {setAnnouncement} = useContext(MyContext)
 
-  const handleSelectChange = e => {
-    setSelectedProvince(e.target.value)
-    setSelectedCity('')
-    setSelectedProfession('')
-  }
-  const handleSelectChangeSecond = e => {
-    setSelectedCity(e.target.value)
-  }
+  const handleSelectChange = (e) => {
+    setSelectedProvince(e.target.value);
+    setSelectedCity('');
+    setSelectedProfession('');
+    setErrors({ ...errors, selectedProvince: false });
+  };
 
-  const handleSelectChangeThird = e => {
-    setSelectedProfession(e.target.value)
-  }
-  const handleInputChange = e => {
-    const { name, value } = e.target
+  const handleSelectChangeSecond = (e) => {
+    setSelectedCity(e.target.value);
+    setErrors({ ...errors, selectedCity: false });
+  };
+
+  const handleSelectChangeThird = (e) => {
+    setSelectedProfession(e.target.value);
+    setErrors({ ...errors, selectedProfession: false });
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
     if (name === 'companyName') {
-      setCompanyName(value)
+      setCompanyName(value);
+      setErrors({ ...errors, companyName: false });
     } else if (name === 'phoneNumber') {
-      setPhoneNumber(value)
+      setPhoneNumber(value);
+      setErrors({ ...errors, phoneNumber: false });
     } else if (name === 'shortDescription') {
-      setShortDescription(value)
+      setShortDescription(value);
+      setErrors({ ...errors, shortDescription: false });
     } else if (name === 'longDescription') {
-      setLongDescription(value)
+      setLongDescription(value);
+      setErrors({ ...errors, longDescription: false });
     }
-  }
-  const handleImageChange = e => {
-    const file = e.target.files[0]
-    const reader = new FileReader()
+  };
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
     reader.onload = () => {
       if (reader.readyState === 2) {
-        const imageData = reader.result
-        setImages(prevImages => [...prevImages, imageData])
+        const imageData = reader.result;
+        setImages((prevImages) => [...prevImages, imageData]);
       }
-    }
-    reader.readAsDataURL(file)
-    e.preventDefault()
-  }
-  const handleRemoveImage = index => {
-    const updatedImages = [...images]
-    updatedImages.splice(index, 1)
-    setImages(updatedImages)
-  }
+    };
 
-  const handleCheckboxChange = e => {
-    setAddImages(e.target.checked)
-    e.preventDefault()
-  }
+    reader.readAsDataURL(file);
+    e.preventDefault();
+  };
+
+  const handleRemoveImage = (index) => {
+    const updatedImages = [...images];
+    updatedImages.splice(index, 1);
+    setImages(updatedImages);
+  };
+
+  const handleCheckboxChange = () => {
+    setAddImages(!addImages);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-  
+
+    const newErrors = {
+      selectedProvince: !selectedProvince,
+      selectedCity: !selectedCity,
+      selectedProfession: !selectedProfession,
+      companyName: !companyName,
+      phoneNumber: !phoneNumber,
+      shortDescription: !shortDescription,
+      longDescription: !longDescription,
+    };
+
+    setErrors(newErrors);
+
+    // Sprawdzanie, czy wystąpiły błędy
+    const hasErrors = Object.values(newErrors).some((error) => error);
+
+    if (!hasErrors) {
+      // Tworzenie obiektu z danymi ogłoszenia
+      const adData = {
+        selectedProvince,
+        selectedCity,
+        selectedProfession,
+        companyName,
+        phoneNumber,
+        shortDescription,
+        longDescription,
+        images,
+      };
+      setAnnouncement(adData)
+    
+      setErrors({
+        selectedProvince: false,
+        selectedCity: false,
+        selectedProfession: false,
+        companyName: false,
+        phoneNumber: false,
+        shortDescription: false,
+        longDescription: false,
+      });
+    }
+
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <select value={selectedProvince} onChange={handleSelectChange}>
-        <option value=''>Wybierz Województwo...</option>
-        {provinces.map(province => (
-          <option key={province.name} value={province.name}>
-            {province.name}
-          </option>
-        ))}
-      </select>
-      {selectedProvince[0] ? (
-        <select value={selectedCity} onChange={handleSelectChangeSecond}>
-          <option value=''>Wybierz Miasto...</option>
-          {provinces
-            .find(province => province.name === selectedProvince)
-            .cities.map(city => (
-              <option key={city} value={city}>
-                {city}
-              </option>
-            ))}
-        </select>
-      ) : (
-        <select style={{ cursor: 'not-allowed', color: '#9999' }}>
-          <option>Wybierz Miasto...</option>
-        </select>
-      )}
-      {selectedCity && selectedProvince[0] ? (
-        <select value={selectedProfession} onChange={handleSelectChangeThird}>
-          <option value=''>Wybierz Specjalizację...</option>
-          {professions.map(profession => (
-            <option key={profession.id} value={profession.name}>
-              {profession.name}
+    <Wrapper>
+      <form onSubmit={handleSubmit}>
+      {errors.selectedProvince ? (
+            <Error>Proszę wybrać województwo.</Error>
+          ):
+          (<label>Województwo</label>)} 
+        <select value={selectedProvince} onChange={handleSelectChange}>
+          <option value=''>Wybierz Województwo...</option>
+          {provinces.map(province => (
+            <option key={province.name} value={province.name}>
+              {province.name}
             </option>
           ))}
         </select>
-      ) : (
-        <select style={{ cursor: 'not-allowed', color: '#9999' }}>
-          <option>Wybierz Specjalizację...</option>
-        </select>
-      )}
-
-      <input
-        type='text'
-        name='companyName'
-        value={companyName}
-        onChange={handleInputChange}
-        placeholder='Nazwa Firmy'
-        maxLength={50}
-      />
-
-      <input
-        type='text'
-        name='phoneNumber'
-        value={phoneNumber}
-        onChange={handleInputChange}
-        maxLength={9}
-        placeholder='Numer Telefonu (9 cyfr)'
-      />
-
-      <textarea
-        name='shortDescription'
-        value={shortDescription}
-        onChange={handleInputChange}
-        maxLength={300}
-        placeholder='Krótki Opis (maks. 300 znaków)'
-      />
-
-      <textarea
-        name='longDescription'
-        value={longDescription}
-        onChange={handleInputChange}
-        maxLength={2000}
-        placeholder='Długi Opis (maks. 2000 znaków)'
-      />
-     
-     <div>
+        {selectedProvince[0] ? (
+          <>
+           {errors.selectedCity ? (
+            <Error>Proszę wybrać miasto.</Error>
+          ):(<label>Miasto</label>)}
+            
+            <select value={selectedCity} onChange={handleSelectChangeSecond}>
+              <option value=''>Wybierz Miasto...</option>
+              {provinces
+                .find(province => province.name === selectedProvince)
+                .cities.map(city => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+            </select>
+          </>
+        ) : (
+          <select style={{ cursor: 'not-allowed', color: '#9999' }}>
+            <option>Wybierz Miasto...</option>
+          </select>
+        )}
+        {selectedCity && selectedProvince[0] ? (
+          <>
+          {errors.selectedProfession ? (
+            <Error>Proszę wybrać specjalizację.</Error>
+          ):(<label>Specjalizacja</label>)}
+            
+            <select
+              value={selectedProfession}
+              onChange={handleSelectChangeThird}
+            >
+              <option value=''>Wybierz Specjalizację...</option>
+              {professions.map(profession => (
+                <option key={profession.id} value={profession.name}>
+                  {profession.name}
+                </option>
+              ))}
+            </select>
+          </>
+        ) : (
+          <select style={{ cursor: 'not-allowed', color: '#9999' }}>
+            <option>Wybierz Specjalizację...</option>
+          </select>
+        )}
+        {errors.companyName ? (
+            <Error>Proszę podać nazwę firmy.</Error>
+          ):(<label>Nazwa Firmy</label>)}
+        
         <input
-          type='checkbox'
-          id='addImagesCheckbox'
-          checked={addImages}
-          onChange={handleCheckboxChange}
+          type='text'
+          name='companyName'
+          value={companyName}
+          onChange={handleInputChange}
+          placeholder='(maks. 50 znaków)'
+          maxLength={50}
         />
-        <label htmlFor='addImagesCheckbox'>Dodaj zdjęcia</label>
-      </div>
+{errors.phoneNumber ? (
+            <Error>Proszę podać numer telefonu.</Error>
+          ):(<label>Numer Telefonu</label>)}
+      
+        <input
+          type='text'
+          name='phoneNumber'
+          value={phoneNumber}
+          onChange={handleInputChange}
+          maxLength={9}
+          placeholder='Numer Telefonu (9 cyfr)'
+        />
+        {errors.shortDescription ? (
+            <Error>Proszę podać krótki opis.</Error>
+          ):(<label>Krótki Opis</label>)}
+        
+        <textarea
+          name='shortDescription'
+          value={shortDescription}
+          onChange={handleInputChange}
+          maxLength={300}
+          placeholder='Dodaj krótki opis swojej firmy (maks. 300 znaków)'
+        />
+         {errors.longDescription ? (
+            <Error>Proszę podać długi opis.</Error>
+          ):(<label>Dlugi Opis</label>)}
+        
+        <textarea
+          name='longDescription'
+          value={longDescription}
+          onChange={handleInputChange}
+          maxLength={2000}
+          placeholder='Dodaj dokładne informacje firmy (maks. 2000 znaków)'
+        />
 
-      {addImages && (
-        <div>
-         {images.length < 5 && ( <input type='file' accept='image/*' onChange={handleImageChange} />)}
-          {images.map((image, index) => (
-            <div key={index} style={{ display: 'flex', alignItems: 'center' }}>
-              <img
-                src={image}
-                alt={`Zdjęcie ${index + 1}`}
-                style={{ width: '400px', height: '400px', marginRight: '10px' }}
+        <Checkbox>
+          <label htmlFor='addImagesCheckbox'>Chesz dodać zdjęcia? maks. 5</label>
+          <input
+            type='checkbox'
+            id='addImagesCheckbox'
+            checked={addImages}
+            onChange={handleCheckboxChange}
+          />
+        </Checkbox>
+
+        {addImages && (
+          <Images>
+            {images.length < 5 && (
+              <input
+                type='file'
+                accept='image/*'
+                onChange={handleImageChange}
               />
-              <button onClick={() => handleRemoveImage(index)}>Usuń</button>
-            </div>
-          ))}
-        </div>
-      )}
-    </form>
+            )}
+            <ContainerImage>
+              {images.map((image, index) => (
+                <Image key={index}>
+                  <img src={image} alt={`Zdjęcie ${index + 1}`} />
+                  <Button onClick={() => handleRemoveImage(index)}>Usuń</Button>
+                </Image>
+              ))}
+            </ContainerImage>
+          </Images>
+        )}
+        <div>
+        {errors.selectedProvince && (
+            <Error>Proszę wybrać województwo.</Error>
+          )}
+          {errors.selectedCity && (
+            <Error>Proszę wybrać miasto.</Error>
+          )}
+          {errors.selectedProfession && (
+            <Error>Proszę wybrać specjalizację.</Error>
+          )}
+          {errors.companyName && (
+            <Error>Proszę podać nazwę firmy.</Error>
+          )}
+          {errors.phoneNumber && (
+            <Error>Proszę podać numer telefonu.</Error>
+          )}
+          {errors.shortDescription && (
+            <Error>Proszę podać krótki opis.</Error>
+          )}
+          {errors.longDescription && (
+            <Error>Proszę podać długi opis.</Error>
+          )}
+          </div>
+        <Add>
+          <div>
+            <Button>Dodaj ogłoszenie</Button>
+            <p>Nie chcesz dodawać ogłoszenia?</p>
+            <Button>Przejdź do serwisu</Button>
+          </div>
+        </Add>
+      </form>
+    </Wrapper>
   )
 }

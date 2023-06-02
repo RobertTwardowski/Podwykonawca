@@ -1,4 +1,4 @@
-import React, {  useState, createContext } from 'react'
+import React, { useState, createContext } from 'react'
 import Navigation from './components/organisms/Navigation/Navigation'
 import { GlobalStyle } from './assets/styles/GlobalStyles'
 import SearchForm from './components/organisms/SearchForm/SearchForm.js'
@@ -20,8 +20,8 @@ function App () {
   const [province, setProvince] = useState('')
   const [data, setData] = useState('')
   const [logIn, setLogIn] = useState(false)
+  const [announcement, setAnnouncement] = useState('')
 
- 
   const handleDataChange = newData => {
     setData(newData)
   }
@@ -42,7 +42,10 @@ function App () {
           setCity,
           province,
           setProvince,
-          logIn,setLogIn
+          logIn,
+          setLogIn,
+          announcement,
+          setAnnouncement
         }}
       >
         <Router>
@@ -56,7 +59,7 @@ function App () {
               element={<LogIn data={data} onDataChange={handleLogIn} />}
             />
             <Route path='/profile/:id' Component={CompanyAnnouncement} />
-            <Route path='/Konto' Component={Account}/>
+            <Route path='/Konto' Component={Account} />
             <Route
               exact
               path='/Podwykonawca'
@@ -64,12 +67,9 @@ function App () {
                 <>
                   <Navigation data={logIn} />
                   <SearchForm />
-                    <>
-                      <Companies
-                        companiesData={companyData}
-                        itemsPerPage={10}
-                      />
-                    </>
+                  <>
+                    <Companies companiesData={companyData} itemsPerPage={10} />
+                  </>
                   <Footer />
                 </>
               }
