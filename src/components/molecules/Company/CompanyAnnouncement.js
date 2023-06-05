@@ -27,16 +27,16 @@ function CompanyAnnouncement () {
   const [comment, setComment] = useState('')
   const [rating, setRating] = useState('')
   const [commentIndex, setCommentIndex] = useState(0)
-  const [selectedPhoto, setSelectedPhoto] = useState(null)
   const visibleComments = comments.slice(commentIndex, commentIndex + 5)
   const [loader, setLodaer] = useState(false)
   const {logIn} = useContext(MyContext)
   const navigate = useNavigate('')
+  const [selectedPhoto, setSelectedPhoto] = useState(companyData[5].logo);
 
   useEffect(() => {
     setTimeout(() => {
       setLodaer(true)
-    }, 1500)
+    }, 1000)
   })
   const handleLogIn = event => {
     event.preventDefault()
@@ -76,6 +76,10 @@ function CompanyAnnouncement () {
   const loadMoreComments = () => {
     setCommentIndex(prevIndex => prevIndex + 5)
   }
+  const handelGoService = (event) => {
+    event.preventDefault()
+        navigate('/Podwykonawca')
+        }
 
   return (
     <Section>{!loader ?(<Loader/>):
@@ -92,25 +96,24 @@ function CompanyAnnouncement () {
         </CityProfession>
 
         <About>
-          <p>{Company.about}</p>
-          <p>{Company.about}</p>
-          <p>{Company.about}</p>
+          <p>{Company.aboutLong}</p>
+          
         </About>
         <CarouselWrapper>
-          {companyData.slice(5, 10).map((company, index) => (
-            <CarouselImage
-              key={index}
-              src={company.logo}
-              alt={`Company Logo ${index}`}
-              onClick={() => handlePhotoClick(company.logo)}
-            />
-          ))}
-        </CarouselWrapper>
-        {selectedPhoto && (
-          <ImageSection>
-            <img src={selectedPhoto} alt='Selected Photo' />
-          </ImageSection>
-        )}
+  {companyData.slice(5, 10).map((company, index) => (
+    <CarouselImage
+      key={index}
+      src={company.logo}
+      alt={`Company Logo ${index}`}
+      onClick={() => handlePhotoClick(company.logo)}
+    />
+  ))}
+</CarouselWrapper>
+
+<ImageSection>
+  <img src={selectedPhoto} alt='Selected Photo' />
+</ImageSection>
+<Button onClick={handelGoService}>Przejdź do Serwisu</Button>
       </Wrapper>
       <SectionComment>
         <Comments> {visibleComments.map((comment, index) => (

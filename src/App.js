@@ -22,6 +22,7 @@ function App () {
   const [logIn, setLogIn] = useState(false)
   const [announcement, setAnnouncement] = useState('')
 
+
   const handleDataChange = newData => {
     setData(newData)
   }

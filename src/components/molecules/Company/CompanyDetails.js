@@ -12,7 +12,7 @@ const CompanyDetails = ({ data, onClose }) => {
   return (
     <div>
       <p>
-        <span>opis: </span> {data.about}
+        <span>opis: </span> {data.aboutShort}
       </p>
       <p>
         <span>miasto: </span> {data.cities}

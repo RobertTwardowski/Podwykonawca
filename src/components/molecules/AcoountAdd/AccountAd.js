@@ -12,6 +12,7 @@ import {
 } from './AccountAd.styles';
 import { Button } from '../../atom/ButtonMoreInfo.styles';
 import { MyContext } from '../../../App'
+import { useNavigate } from 'react-router-dom'
 
 export const AccountAd = () => {
   const [selectedProvince, setSelectedProvince] = useState('');
@@ -32,6 +33,7 @@ export const AccountAd = () => {
     shortDescription: false,
     longDescription: false,
   });
+  const navigate = useNavigate()
   const {setAnnouncement} = useContext(MyContext)
 
   const handleSelectChange = (e) => {
@@ -137,7 +139,14 @@ export const AccountAd = () => {
       });
     }
 
+ 
+
   };
+    
+  const handelGoService = (event) => {
+event.preventDefault()
+    navigate('/Podwykonawca')
+    }
 
   return (
     <Wrapper>
@@ -302,7 +311,7 @@ export const AccountAd = () => {
           <div>
             <Button>Dodaj ogłoszenie</Button>
             <p>Nie chcesz dodawać ogłoszenia?</p>
-            <Button>Przejdź do serwisu</Button>
+            <Button onClick={handelGoService}>Przejdź do serwisu</Button>
           </div>
         </Add>
       </form>

@@ -15,6 +15,11 @@ export const Wrapper = styled.div`
   background-color: #f2f4f5;
   border-radius: 6px;
   margin: 10px;
+
+  button{
+    margin-top: 20px;
+    background-color: #d4ebf2;
+  }
 `
 
 export const CityProfession = styled.div`

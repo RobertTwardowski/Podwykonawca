@@ -8,7 +8,8 @@ for (let i = 0; i < 10000; i++) {
   const province = faker.address.state()
   const professions = faker.commerce.department()
   const number = faker.phone.number()
-  const about = faker.lorem.sentences(10)
+  const aboutShort = faker.lorem.sentences(10)
+  const aboutLong = faker.lorem.sentences(40)
   const logo = `https://picsum.photos/800/600?random=${i}`
   const rating = faker.datatype
     .number({
@@ -24,7 +25,8 @@ for (let i = 0; i < 10000; i++) {
     province: province,
     professions: professions,
     number: number,
-    about: about,
+    aboutShort: aboutShort,
+    aboutLong: aboutLong,
     logo: logo,
     rating: rating
   })

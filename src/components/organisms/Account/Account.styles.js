@@ -9,5 +9,6 @@ height: 100vh;
 
 h2,h3,button{
     padding: 20px;
+    margin: 10px;
 }
 `

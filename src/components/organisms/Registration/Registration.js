@@ -17,7 +17,7 @@ export const Registration = ({ onDataChange }) => {
   const [showConfirmation, setShowConfirmation] = useState(false)
   const navigate = useNavigate()
   const [loader, setLodaer] = useState(false)
-
+ 
   useEffect(() => {
     setTimeout(() => {
       setLodaer(true)
