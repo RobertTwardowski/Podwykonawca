@@ -70,11 +70,26 @@ export const Images = styled.div`
   height: 100%;
   background-color: #f2f4f5;
 
-  input{
-    width: 25%;
-    height: 25px;
-  }
 `
+export const StyledFileInput = styled.input.attrs({
+  type: 'file',
+  accept: 'image/*',
+})`
+  display: none;
+
+`;
+
+export const CustomFileInput = styled.label`
+  background-color: #d4ebf2;
+  padding: 10px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+
+  :hover{
+
+background-color: #ccc;
+}
+`;
 export const ContainerImage = styled.div`
   display: flex;
   flex-direction: row;

@@ -9,6 +9,8 @@ import {
   Checkbox,
   Add,
   Error,
+  StyledFileInput,
+  CustomFileInput
 } from './AccountAd.styles';
 import { Button } from '../../atom/ButtonMoreInfo.styles';
 import { MyContext } from '../../../App'
@@ -268,11 +270,12 @@ event.preventDefault()
         {addImages && (
           <Images>
             {images.length < 5 && (
-              <input
-                type='file'
-                accept='image/*'
-                onChange={handleImageChange}
-              />
+             <>
+             <CustomFileInput htmlFor="fileInput">
+               Wybierz Zdjęcie
+               <StyledFileInput id="fileInput" onChange={handleImageChange} />
+             </CustomFileInput>
+           </>
             )}
             <ContainerImage>
               {images.map((image, index) => (
