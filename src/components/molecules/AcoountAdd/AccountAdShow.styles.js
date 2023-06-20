@@ -15,6 +15,11 @@ export const Section = styled.div`
   overflow: hidden;
   margin: 10px;
 `
+export const Header =styled.div`
+display: flex;
+justify-content: space-between;
+width: 80%;
+`
 
 export const Wrapper = styled.div`
   display: flex;
@@ -93,6 +98,7 @@ justify-content: center;
 
 button{
     margin: 20px;
+    background-color: #d4ebf2;
 }
 `
 

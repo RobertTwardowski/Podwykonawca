@@ -15,6 +15,7 @@ import {
 import { Button } from '../../atom/ButtonMoreInfo.styles';
 import { MyContext } from '../../../App'
 import { useNavigate } from 'react-router-dom'
+import { companyData } from '../../../Data/Data';
 
 export const AccountAd = () => {
   const [selectedProvince, setSelectedProvince] = useState('');
