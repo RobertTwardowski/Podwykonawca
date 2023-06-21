@@ -54,7 +54,7 @@ for (let i = 0; i < 20; i++) {
 export const provinces = [
   {
     id: 1,
-    name: 'Dolnośląskie',
+    name: 'dolnośląskie',
     cities: [
       'Wrocław',
       'Wałbrzych',
@@ -65,7 +65,7 @@ export const provinces = [
   },
   {
     id: 2,
-    name: 'Kujawsko-Pomorskie',
+    name: 'kujawsko-pomorskie',
     cities: [
       'Bydgoszcz',
       'Toruń',
@@ -76,7 +76,7 @@ export const provinces = [
   },
   {
     id: 3,
-    name: 'Lubelskie',
+    name: 'lubelskie',
     cities: [
       'Lublin',
       'Chełm',
@@ -87,7 +87,7 @@ export const provinces = [
   },
   {
     id: 4,
-    name: 'Lubuskie',
+    name: 'lubuskie',
     cities: [
       'Gorzów Wielkopolski',
       'Zielona Góra',
@@ -98,7 +98,7 @@ export const provinces = [
   },
   {
     id: 5,
-    name: 'Łódzkie',
+    name: 'łódzkie',
     cities: [
       'Łódź',
       'Piotrków Trybunalski',
@@ -109,7 +109,7 @@ export const provinces = [
   },
   {
     id: 6,
-    name: 'Małopolskie',
+    name: 'małopolskie',
     cities: [
       'Kraków',
       'Tarnów',
@@ -120,7 +120,7 @@ export const provinces = [
   },
   {
     id: 7,
-    name: 'Mazowieckie',
+    name: 'mazowieckie',
     cities: [
       'Warszawa',
       'Radom',
@@ -130,7 +130,7 @@ export const provinces = [
   },
   {
     id: 8,
-    name: 'Opolskie',
+    name: 'opolskie',
     cities: [
       'Opole',
       'Kędzierzyn-Koźle',
@@ -141,7 +141,7 @@ export const provinces = [
   },
   {
     id: 9,
-    name: 'Podkarpackie',
+    name: 'podkarpackie',
     cities: [
       'Rzeszów',
       'Przemyśl',
@@ -152,12 +152,12 @@ export const provinces = [
   },
   {
     id: 10,
-    name: 'Podlaskie',
+    name: 'podlaskie',
     cities: ['Białystok', 'Suwałki', 'Łomża']
   },
   {
     id: 11,
-    name: 'Pomorskie',
+    name: 'pomorskie',
     cities: [
       'Gdańsk',
       'Gdynia',
@@ -168,7 +168,7 @@ export const provinces = [
   },
   {
     id: 12,
-    name: 'Śląskie',
+    name: 'śląskie',
     cities: [
       'Katowice',
       'Gliwice',
@@ -179,7 +179,7 @@ export const provinces = [
   },
   {
     id: 13,
-    name: 'Świętokrzyskie',
+    name: 'świętokrzyskie',
     cities: [
       'Kielce',
       'Ostrowiec Świętokrzyski',
@@ -190,7 +190,7 @@ export const provinces = [
   },
   {
     id: 14,
-    name: 'Warmińsko-Mazurskie',
+    name: 'warmińsko-mazurskie',
     cities: [
       'Olsztyn',
       'Elbląg',
@@ -201,7 +201,7 @@ export const provinces = [
   },
   {
     id: 15,
-    name: 'Wielkopolskie',
+    name: 'wielkopolskie',
     cities: [
       'Poznań',
       'Kalisz',
@@ -212,7 +212,7 @@ export const provinces = [
   },
   {
     id: 16,
-    name: 'Zachodniopomorskie',
+    name: 'zachodniopomorskie',
     cities: [
       'Szczecin',
       'Koszalin',

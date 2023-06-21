@@ -130,7 +130,20 @@ export const AccountAd = () => {
         images,
       };
       setAnnouncement(adData)
-    
+      companyData.push({
+        id: companyData.length + 1,
+        name: adData.companyName,
+        cities: adData.selectedCity,
+        province: adData.selectedProvince,
+        professions: adData.selectedProfession,
+        number: adData.phoneNumber,
+        aboutShort: adData.shortDescription,
+        aboutLong: adData.longDescription,
+        logo: adData.images.logo,
+        rating: 0
+      });
+      console.log(companyData);
+      console.log(adData.images);
       setErrors({
         selectedProvince: false,
         selectedCity: false,
@@ -141,14 +154,12 @@ export const AccountAd = () => {
         longDescription: false,
       });
     }
-
- 
-
   };
     
   const handelGoService = (event) => {
 event.preventDefault()
     navigate('/Podwykonawca')
+    
     }
 
   return (
