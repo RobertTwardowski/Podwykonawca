@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: #f2f4f5;
+  width: 100%;
 
   button {
     background-color: #d4ebf2;
@@ -115,19 +116,21 @@ export const Image = styled.div`
 export const Add = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
   text-align: center;
-  height: 200px;
   margin: 30px;
+  width: 50%;
 
   div {
-    width: 100%;
+    width: 50%;
     display: flex;
-    flex-direction: column;
-    p {
-      margin-top: 10px;
-    }
+    justify-content: center;
+  align-items: center;
+  text-align: center;
+
     button{
         margin: 20px;
+        width: 100%;
     }
   }
 `

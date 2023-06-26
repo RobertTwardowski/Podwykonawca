@@ -16,6 +16,8 @@ import { Button } from '../../atom/ButtonMoreInfo.styles';
 import { MyContext } from '../../../App'
 import { useNavigate } from 'react-router-dom'
 import { companyData } from '../../../Data/Data';
+import { Header,SectionButtons,Container} from './AccountAdShow.styles';
+import { Logo } from '../../organisms/Navigation/Navigation.styles'
 
 export const AccountAd = () => {
   const [selectedProvince, setSelectedProvince] = useState('');
@@ -163,6 +165,13 @@ event.preventDefault()
     }
 
   return (
+    <Container>
+    <Header>
+    <Logo to='/Podwykonawca' />
+    <SectionButtons>
+      <Button onClick={handelGoService}>Przejdź do Serwisu</Button>
+    </SectionButtons>
+  </Header>
     <Wrapper>
       <form onSubmit={handleSubmit}>
       {errors.selectedProvince ? (
@@ -325,11 +334,10 @@ event.preventDefault()
         <Add>
           <div>
             <Button>Dodaj ogłoszenie</Button>
-            <p>Nie chcesz dodawać ogłoszenia?</p>
-            <Button onClick={handelGoService}>Przejdź do serwisu</Button>
           </div>
         </Add>
       </form>
     </Wrapper>
+    </Container>
   )
 }
