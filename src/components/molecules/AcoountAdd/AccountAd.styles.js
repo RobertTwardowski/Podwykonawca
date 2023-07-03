@@ -31,6 +31,9 @@ export const Wrapper = styled.div`
     font-size: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    @media (max-width: 960px) {
+width: 80%;
+}
   }
   select:focus,
   input:focus,
@@ -46,6 +49,9 @@ export const Wrapper = styled.div`
     border-radius: 4px;
     margin: 10px;
     font-size: 16px;
+    @media (max-width: 960px) {
+width: 80%;
+}
   }
 `
 
@@ -94,6 +100,10 @@ background-color: #ccc;
 export const ContainerImage = styled.div`
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 960px) {
+flex-direction: column;
+}
 `
 
 export const Image = styled.div`
@@ -127,7 +137,9 @@ export const Add = styled.div`
     justify-content: center;
   align-items: center;
   text-align: center;
-
+  @media (max-width: 960px) {
+width: 100%;
+}
     button{
         margin: 20px;
         width: 100%;

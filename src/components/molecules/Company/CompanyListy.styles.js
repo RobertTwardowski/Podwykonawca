@@ -10,6 +10,8 @@ border-radius: 6px;
 margin: 10px;
 background-color: white;
 
+
+
 `
 
 export const SectionFirst = styled.div`
@@ -20,6 +22,9 @@ img{
   width: 100%;
   height: 100%;
 }
+@media (max-width: 960px) {
+    width: 50%;
+  }
 `
 
 export const SectionSecond = styled.div`
@@ -75,6 +80,12 @@ button{
   width: 25%;
   margin: 10px;
 }
+@media (max-width: 960px) {
+  button{
+ width: 50%;
+  margin: 10px;
+}
+  }
 `
 export const Rating = styled.p`
 position: absolute;

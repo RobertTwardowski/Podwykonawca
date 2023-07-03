@@ -10,7 +10,13 @@ for (let i = 0; i < 10; i++) {
   const number = faker.phone.number()
   const aboutShort = faker.lorem.sentences(10)
   const aboutLong = faker.lorem.sentences(40)
-  const logo = `https://picsum.photos/800/600?random=${i}`
+  const logo = [
+    "https://picsum.photos/800/600?random=1",
+    "https://picsum.photos/800/600?random=2",
+    "https://picsum.photos/800/600?random=3",
+    "https://picsum.photos/800/600?random=4",
+    "https://picsum.photos/800/600?random=5"
+  ]
   const rating = faker.datatype
     .number({
       min: 1,

@@ -48,6 +48,7 @@ const Companies = ({itemsPerPage}) => {
     const newOffset =
       (event.selected * itemsPerPage) % companyDataArrayProfession.length
     setItemOffset(newOffset)
+    console.log(companyData);
   }
 
   return (

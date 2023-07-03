@@ -15,6 +15,7 @@ import {
 import { Logo } from '../../organisms/Navigation/Navigation.styles'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
 import { useNavigate } from 'react-router-dom'
+import { companyData } from '../../../Data/Data'
 
 
 export const AccountaAdShow = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../../atom/ButtonMoreInfo.styles'
+import {Container} from '../Company/CompanyDetails.styles'
 
 const CompanyDetails = ({ data, onClose }) => {
 
@@ -10,7 +11,7 @@ const CompanyDetails = ({ data, onClose }) => {
     setTimeout(() => navigate(`/profile/${data.id}`), 100)
   }
   return (
-    <div>
+    <Container>
       <p>
         <span>opis: </span> {data.aboutShort}
       </p>
@@ -23,7 +24,7 @@ const CompanyDetails = ({ data, onClose }) => {
       </p>
       <Button onClick={onClose}>Zamknij</Button>
       <Button onClick={handleSubmit}>Przejdź do ogłoszenia</Button>
-    </div>
+    </Container>
   )
 }
 export default CompanyDetails

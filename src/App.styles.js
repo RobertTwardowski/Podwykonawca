@@ -4,6 +4,8 @@ export const App =styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
+width: 100%;
+height: 100%;
 `
 
 export const Spinner = styled.div`
@@ -33,7 +35,7 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 text-align: center;
-height: 500px;
+height: 700px;
 font-size: 40px;
 color: #999;
 `

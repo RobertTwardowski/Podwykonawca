@@ -3,20 +3,36 @@ import styled from 'styled-components'
 export const Section = styled.div`
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
+`
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 1800px;
   width: 70%;
   background-color: #f2f4f5;
   border-radius: 6px;
   margin: 10px;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 
-  button{
+  button {
     margin-top: 20px;
     background-color: #d4ebf2;
   }
@@ -31,6 +47,9 @@ export const CityProfession = styled.div`
     font-size: 20px;
     font-weight: bold;
   }
+  @media (max-width: 960px) {
+    flex-direction: column;
+  }
 `
 
 export const Title = styled.div`
@@ -38,18 +57,35 @@ export const Title = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 30px;
+  font-size: 2rem;
   text-align: center;
 
   img {
     width: 200px;
     height: 200px;
   }
+  @media (max-width: 960px) {
+    width: 80%;
+    font-size: 1rem;
+    flex-direction: column;
+  }
 `
 export const About = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   p {
+    word-break: break-all;
     margin: 10px;
     font-size: 20px;
+  }
+
+  @media (max-width: 960px) {
+    p {
+      width: 80%;
+      font-size: 16px;
+    }
   }
 `
 export const CarouselWrapper = styled.div`
@@ -61,21 +97,36 @@ export const CarouselWrapper = styled.div`
   margin: 16px;
 `
 export const CarouselImage = styled.img`
-  width: 100px;
+  width: 20%;
   height: 100px;
-  margin: 20px;
-  :hover{
+  margin: 10px;
+  :hover {
     opacity: 0.6;
     border: #333 solid 5px;
+  }
+  @media (max-width: 960px) {
+    margin: 3px;
+    width: 15%;
+    height: 15%;
   }
 `
 export const ImageSection = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 10px;
   width: 800px;
   height: 600px;
-  margin: 10px;
+
+  img {
+    width: 80%;
+    height: 80%;
+  }
+  @media (max-width: 960px) {
+    margin: 3px;
+    width: 90%;
+    height: 90%;
+  }
 `
 export const SectionComment = styled.div`
   width: 20%;
@@ -88,6 +139,9 @@ export const SectionComment = styled.div`
   background-color: #d4ebf2;
   border-radius: 6px;
   height: 80%;
+  @media (max-width: 960px) {
+    width: 100%;
+  }
 `
 export const CommentAdd = styled.div`
   display: flex;
@@ -121,21 +175,19 @@ export const CommentInput = styled.textarea`
   font-size: 16px;
   border-radius: 6px;
 `
-export const Comments =styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-text-align: center;
-flex-direction: column;
-height: 50%;
-
-
+export const Comments = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  height: 50%;
 `
 export const Comment = styled.div`
-background-color: #f2f4f5;
+  background-color: #f2f4f5;
   width: 80%;
   display: flex;
- 
+
   padding: 10px;
   margin: 10px;
   flex-direction: column;
@@ -147,5 +199,4 @@ background-color: #f2f4f5;
   p {
     font-size: 12px;
   }
-
 `

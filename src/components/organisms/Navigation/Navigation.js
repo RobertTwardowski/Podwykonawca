@@ -6,7 +6,7 @@ function Navigation ({data}) {
   return (
     <NavigationStyles>
       <Wrapper>
-        <Logo to='/Podwykonawca' />
+        <Logo to='/Podwykonawca' ><h1>Podwykonawca</h1></Logo>
         {data ? (
           <Menu>
             <Link to='/Konto'>Moje Konto</Link>

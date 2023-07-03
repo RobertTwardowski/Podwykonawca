@@ -116,11 +116,11 @@ export const AccountAd = () => {
 
     setErrors(newErrors);
 
-    // Sprawdzanie, czy wystąpiły błędy
+
     const hasErrors = Object.values(newErrors).some((error) => error);
 
     if (!hasErrors) {
-      // Tworzenie obiektu z danymi ogłoszenia
+
       const adData = {
         selectedProvince,
         selectedCity,
@@ -141,11 +141,10 @@ export const AccountAd = () => {
         number: adData.phoneNumber,
         aboutShort: adData.shortDescription,
         aboutLong: adData.longDescription,
-        logo: adData.images.logo,
+        logo: adData.images,
         rating: 0
       });
-      console.log(companyData);
-      console.log(adData.images);
+
       setErrors({
         selectedProvince: false,
         selectedCity: false,
@@ -167,7 +166,7 @@ event.preventDefault()
   return (
     <Container>
     <Header>
-    <Logo to='/Podwykonawca' />
+    <Logo to='/Podwykonawca' ><h1>Podwykonawca</h1></Logo>
     <SectionButtons>
       <Button onClick={handelGoService}>Przejdź do Serwisu</Button>
     </SectionButtons>

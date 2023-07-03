@@ -29,6 +29,8 @@ export const CompanyList = ({
     setSelectedCompany(data)
   }
 
+  
+
   if (!search) {
     return (
       <>
@@ -43,7 +45,7 @@ export const CompanyList = ({
             return (
               <SectionStyles key={data.id}>
                 <SectionFirst>
-                  <img src={data.logo} alt=''></img>
+                  <img src={data.logo[0]} alt=''></img>
                 </SectionFirst>
                 <SectionSecond>
                   <h2>{data.name}</h2>
