@@ -6,15 +6,15 @@ function Navigation ({data}) {
   return (
     <NavigationStyles>
       <Wrapper>
-        <Logo to='/Podwykonawca' ><h1>Podwykonawca</h1></Logo>
+        <Logo to='/Podwykonawca/Podwykonawca' ><h1>Podwykonawca</h1></Logo>
         {data ? (
           <Menu>
-            <Link to='/Konto'>Moje Konto</Link>
+            <Link to='/Podwykonawca/Konto'>Moje Konto</Link>
           </Menu>
         ) : (
           <Menu>
-            <Link to='/Rejestracja'>Zajerestruj się</Link>
-            <Link to='/Logowanie'>Zaloguj się</Link>
+            <Link to='/Podwykonawca/Rejestracja'>Zajerestruj się</Link>
+            <Link to='/Podwykonawca/Logowanie'>Zaloguj się</Link>
           </Menu>
         )}
       </Wrapper>

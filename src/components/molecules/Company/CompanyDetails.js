@@ -8,7 +8,7 @@ const CompanyDetails = ({ data, onClose }) => {
   const navigate = useNavigate('')
   const handleSubmit = event => {
     event.preventDefault()
-    setTimeout(() => navigate(`/profile/${data.id}`), 100)
+    setTimeout(() => navigate(`/Podwykonawca/profile/${data.id}`), 100)
   }
   return (
     <Container>

@@ -44,7 +44,7 @@ function CompanyAnnouncement () {
   })
   const handleLogIn = event => {
     event.preventDefault()
-    navigate('/Logowanie')
+    navigate('/Podwykonawca/Logowanie')
   }
 
   const handleNameChange = e => {

@@ -26,7 +26,7 @@ export const Registration = ({ onDataChange }) => {
 
   const handleLogIn = event => {
     event.preventDefault()
-    navigate('/Logowanie')
+    navigate('/Podwykonawca/Logowanie')
   }
 
   const handleRegistration = event => {
@@ -47,7 +47,7 @@ export const Registration = ({ onDataChange }) => {
 
   const handelLogIn = event => {
     event.preventDefault()
-    navigate('/Logowanie')
+    navigate('/Podwykonawca/Logowanie')
   }
 
   return (

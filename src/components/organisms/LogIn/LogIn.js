@@ -29,7 +29,7 @@ export const LogIn = ({ data, onDataChange }) => {
   
   const handleRegistration = event => {
     event.preventDefault()
-    navigate('/Rejestracja')
+    navigate('/Podwykonawca/Rejestracja')
   }
   const handleSubmit = event => {
     event.preventDefault()

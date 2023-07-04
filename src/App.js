@@ -52,15 +52,15 @@ function App () {
         <Router>
           <Routes>
             <Route
-              path='/Rejestracja'
+              path='/Podwykonawca/Rejestracja'
               element={<Registration onDataChange={handleDataChange} />}
             />
             <Route
-              path='/Logowanie'
+              path='/Podwykonawca/Logowanie'
               element={<LogIn data={data} onDataChange={handleLogIn} />}
             />
-            <Route path='/profile/:id' Component={CompanyAnnouncement} />
-            <Route path='/Konto' Component={Account} />
+            <Route path='/Podwykonawca/profile/:id' Component={CompanyAnnouncement} />
+            <Route path='/Podwykonawca/Konto' Component={Account} />
             <Route
               exact
               path='/Podwykonawca'
