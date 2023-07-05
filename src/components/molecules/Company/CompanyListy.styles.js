@@ -5,18 +5,17 @@ import ReactPaginate from "react-paginate";
 export const SectionStyles = styled.div`
 display: flex;
 width: 100%;
-box-shadow: 1px 2px 2px 2px white;
 border-radius: 6px;
 margin: 10px;
 background-color: white;
-
+border: 1px solid #999;
 
 
 `
 
 export const SectionFirst = styled.div`
 width: 30%;
-height: 150px;
+height: 160px;
 
 img{
   width: 100%;
