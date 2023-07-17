@@ -132,7 +132,6 @@ function CompanyAnnouncement () {
           </Wrapper>
           <SectionComment>
             <Comments>
-              {' '}
               {visibleComments.map((comment, index) => (
                 <Comment key={index}>
                   <p>{comment.commentName}</p>

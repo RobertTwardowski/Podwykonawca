@@ -18,6 +18,7 @@ import { useNavigate } from 'react-router-dom'
 import { companyData } from '../../../Data/Data'
 import { Header, SectionButtons, Container } from './AccountAdShow.styles'
 import { Logo } from '../../organisms/Navigation/Navigation.styles'
+import axios from 'axios';
 
 export const AccountAd = () => {
   const [selectedProvince, setSelectedProvince] = useState('')
@@ -101,9 +102,9 @@ export const AccountAd = () => {
     setAddImages(!addImages)
   }
 
-  const handleSubmit = e => {
-    e.preventDefault()
-
+  const handleSubmit = async e => {
+    e.preventDefault();
+  
     const newErrors = {
       selectedProvince: !selectedProvince,
       selectedCity: !selectedCity,
@@ -112,12 +113,12 @@ export const AccountAd = () => {
       phoneNumber: !phoneNumber,
       shortDescription: !shortDescription,
       longDescription: !longDescription
-    }
-
-    setErrors(newErrors)
-
-    const hasErrors = Object.values(newErrors).some(error => error)
-
+    };
+  
+    setErrors(newErrors);
+  
+    const hasErrors = Object.values(newErrors).some(error => error);
+  
     if (!hasErrors) {
       const adData = {
         selectedProvince,
@@ -128,8 +129,8 @@ export const AccountAd = () => {
         shortDescription,
         longDescription,
         images
-      }
-      setAnnouncement(adData)
+      };
+      setAnnouncement(adData);
       companyData.push({
         id: companyData.length + 1,
         name: adData.companyName,
@@ -141,8 +142,8 @@ export const AccountAd = () => {
         aboutLong: adData.longDescription,
         logo: adData.images,
         rating: 0
-      })
-
+      });
+  
       setErrors({
         selectedProvince: false,
         selectedCity: false,
@@ -151,10 +152,16 @@ export const AccountAd = () => {
         phoneNumber: false,
         shortDescription: false,
         longDescription: false
-      })
+      });
+  
+      try {
+        const response = await axios.post('/api/form', adData);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Błąd podczas wysyłania żądania POST', error);
+      }
     }
-  }
-
+  };
   const handelGoService = event => {
     event.preventDefault()
     navigate('/Podwykonawca')

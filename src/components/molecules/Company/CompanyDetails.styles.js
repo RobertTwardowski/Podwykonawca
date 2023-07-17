@@ -11,7 +11,8 @@ export const ButtonsContainer=styled.div`
 display: flex;
 text-align: center;
 align-items: center;
+flex-direction: column;
 button{
-    width: 30%;
+    width: 50%;
 }
 `
