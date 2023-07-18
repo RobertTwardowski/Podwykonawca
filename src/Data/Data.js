@@ -244,7 +244,7 @@ export const professions = [
   },
   {
     id: 4,
-    name: "Brygadzista budowlany",
+    name: "Murarz",
   },
   {
     id: 5,
