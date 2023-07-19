@@ -10,7 +10,7 @@ import { LogIn } from './components/organisms/LogIn/LogIn.js'
 import CompanyAnnouncement from './components/molecules/Company/CompanyAnnouncement.js'
 import { companyData } from './Data/Data.js'
 import { Account } from './components/organisms/Account/Account.js'
-import A from "./A"
+
 
 export const MyContext = createContext()
 
@@ -79,7 +79,7 @@ function App () {
           </Routes>
         </Router>
       </MyContext.Provider>
-      <A></A>
+
     </>
   )
 }

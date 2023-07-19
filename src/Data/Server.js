@@ -1,34 +1,13 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const Company = require('./models/Company');
+const express = requiere('express')
+const app = express()
+const { port } = require('./Config')
 
-// Tworzenie instancji serwera Express
-const app = express();
+const apiRouter = require('./Routes/Api')
 
-// Konfiguracja połączenia z bazą danych MongoDB
-mongoose.connect('mongodb://localhost:27017/Podwykonawca', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+require('./Db/mongoose')
+
+app.use('/Podwykonawca',apiRouter)
+
+app.listen(port, function () {
+  console.log('serwer slucha')
 })
-.then(() => {
-  console.log('Połączono z bazą danych MongoDB');
-})
-.catch((error) => {
-  console.error('Błąd podczas połączenia z bazą danych MongoDB:', error);
-});
-
-// Endpoint do pobrania danych firm
-app.get('/api/companies', async (req, res) => {
-  try {
-    const companies = await Company.find(); // Pobranie wszystkich firm z bazy danych
-    res.json(companies);
-  } catch (error) {
-    console.error('Błąd podczas pobierania danych firm:', error);
-    res.status(500).json({ error: 'Błąd podczas pobierania danych firm' });
-  }
-});
-
-// Uruchomienie serwera
-app.listen(8000, () => {
-  console.log('Serwer API działa na porcie 8000');
-});
