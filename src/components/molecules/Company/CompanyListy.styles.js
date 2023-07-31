@@ -6,10 +6,11 @@ export const SectionStyles = styled.div`
 display: flex;
 width: 100%;
 border-radius: 6px;
-margin: 10px;
+padding: 10px;
+margin: 20px;
 background-color: white;
-border: 1px solid #999;
-
+border: none;
+box-shadow: 2px 2px 4px #888888;
 
 `
 
@@ -98,6 +99,6 @@ justify-content: center;
 align-items: center;
 text-align: center;
 height: 300px;
-font-size: 40px;
+font-size: 28px;
 color: #999;
 `

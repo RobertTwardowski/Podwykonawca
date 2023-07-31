@@ -14,6 +14,7 @@ export const Container = styled.div`
   width: 400px;
   height: 600px;
   background-color: #fff;
+  box-shadow: 2px 2px 4px #888888;
 
   button {
     width: 80%;

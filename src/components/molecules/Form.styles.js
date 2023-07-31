@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
@@ -24,12 +24,11 @@ export const Wrapper = styled.div`
     color: #333;
   }
 
-  button{
+  button {
     margin-top: 10px;
     width: 90%;
-    
   }
-`
+`;
 export const FormStyles = styled.div`
   width: 600px;
   height: 250px;
@@ -39,4 +38,5 @@ export const FormStyles = styled.div`
   align-items: center;
   background: #9999;
   border-radius: 6px;
-`
+  box-shadow: 2px 2px 4px #888888;
+`;
