@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react'
-import { useParams } from 'react-router-dom'
-import { companyData, comments } from '../../../Data/Data'
+import { useParams, useNavigate } from 'react-router-dom'
+import { companyData, comments as initialComments } from '../../../Data/Data'
 import {
   Wrapper,
   CommentAdd,
@@ -19,29 +19,31 @@ import {
 import { Button } from '../../atom/ButtonMoreInfo.styles'
 import { Loader } from '../../atom/Loader'
 import { MyContext } from '../../../App'
-import { useNavigate } from 'react-router-dom'
 import { Header, SectionButtons } from '../AcoountAdd/AccountAdShow.styles'
 import { Logo } from '../../organisms/Navigation/Navigation.styles'
 
-
 function CompanyAnnouncement () {
   const { id } = useParams()
-  const Company = companyData.find(Company => Company.id == id)
+  const Company = companyData.find(Company => Company.id === parseInt(id))
   const [name, setName] = useState('')
   const [comment, setComment] = useState('')
   const [rating, setRating] = useState('')
   const [commentIndex, setCommentIndex] = useState(0)
+  const [comments, setComments] = useState(initialComments)
   const visibleComments = comments.slice(commentIndex, commentIndex + 5)
   const [loader, setLodaer] = useState(false)
   const { logIn } = useContext(MyContext)
-  const navigate = useNavigate('')
-  const [selectedPhoto, setSelectedPhoto] = useState(companyData[5].logo)
+  const navigate = useNavigate()
+  const [selectedPhoto, setSelectedPhoto] = useState(Company.logo[0])
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       setLodaer(true)
     }, 1000)
-  })
+
+    return () => clearTimeout(timer)
+  }, [])
+
   const handleLogIn = event => {
     event.preventDefault()
     navigate('/Podwykonawca/Logowanie')
@@ -63,16 +65,17 @@ function CompanyAnnouncement () {
     if (name.trim() !== '' && comment.trim() !== '' && rating !== '') {
       const newComment = {
         commentName: name,
-        commnet: comment,
+        comment: comment,
         rating: rating
       }
 
-      comments.unshift(newComment)
+      setComments(prevComments => [newComment, ...prevComments])
       setName('')
       setComment('')
       setRating('')
     }
   }
+
   const handlePhotoClick = photo => {
     setSelectedPhoto(photo)
   }
@@ -80,6 +83,7 @@ function CompanyAnnouncement () {
   const loadMoreComments = () => {
     setCommentIndex(prevIndex => prevIndex + 5)
   }
+
   const handelGoService = event => {
     event.preventDefault()
     navigate('/Podwykonawca')
@@ -96,90 +100,87 @@ function CompanyAnnouncement () {
         </SectionButtons>
       </Header>
       <Container>
-      {!loader ? (
-        <Loader />
-      ) : (
-        <>
-          <Wrapper>
-            <Title>
-              <img src={Company.logo[0]} alt='' />
-              <h1>{Company.name}</h1>
-            </Title>
-            <CityProfession>
-              <p>Specjalizacja: {Company.professions}</p>
-              <p>miasto: {Company.cities}</p>
-              <p>numer: {Company.number}</p>
-            </CityProfession>
-
-            <About>
-              <p>{Company.aboutLong}</p>
-            </About>
-            <CarouselWrapper>
-              {Company.logo.slice(0, 5).map((logo, index) => (
-                <CarouselImage
-                  key={index}
-                  src={logo}
-                  alt={`Company Logo ${index}`}
-                  onClick={() => handlePhotoClick(logo)}
-                />
-              ))}
-            </CarouselWrapper>
-
-            <ImageSection>
-              <img src={selectedPhoto} alt='Selected Photo' />
-            </ImageSection>
-            <Button onClick={handelGoService}>Przejdź do Serwisu</Button>
-          </Wrapper>
-          <SectionComment>
-            <Comments>
-              {visibleComments.map((comment, index) => (
-                <Comment key={index}>
-                  <p>{comment.commentName}</p>
-                  <p>{comment.commnet}</p>
-                  <p>{comment.rating}</p>
-                </Comment>
-              ))}
-              {comments.length > commentIndex + 5 && (
-                <Button onClick={loadMoreComments}>
-                  Pokaż kolejne komentarze
-                </Button>
+        {!loader ? (
+          <Loader />
+        ) : (
+          <>
+            <Wrapper>
+              <Title>
+                <img src={Company.logo[0]} alt='' />
+                <h1>{Company.name}</h1>
+              </Title>
+              <CityProfession>
+                <p>Specjalizacja: {Company.professions}</p>
+                <p>Miasto: {Company.cities}</p>
+                <p>Numer: {Company.number}</p>
+              </CityProfession>
+              <About>
+                <p>{Company.aboutLong}</p>
+              </About>
+              <CarouselWrapper>
+                {Company.logo.slice(0, 5).map((logo, index) => (
+                  <CarouselImage
+                    key={logo}
+                    src={logo}
+                    alt={`Company Logo ${index}`}
+                    onClick={() => handlePhotoClick(logo)}
+                  />
+                ))}
+              </CarouselWrapper>
+              <ImageSection>
+                <img src={selectedPhoto} alt='Selected Photo' />
+              </ImageSection>
+              <Button onClick={handelGoService}>Przejdź do Serwisu</Button>
+            </Wrapper>
+            <SectionComment>
+              <Comments>
+                {visibleComments.map((comment, index) => (
+                  <Comment key={index}>
+                    <p>{comment.commentName}</p>
+                    <p>{comment.comment}</p>
+                    <p>{comment.rating}</p>
+                  </Comment>
+                ))}
+                {comments.length > commentIndex + 5 && (
+                  <Button onClick={loadMoreComments}>
+                    Pokaż kolejne komentarze
+                  </Button>
+                )}
+              </Comments>
+              {!logIn ? (
+                <CommentAdd>
+                  <p>Zaloguj się aby dodać ocenę i komentarz</p>
+                  <Button onClick={handleLogIn}>Zaloguj się</Button>
+                </CommentAdd>
+              ) : (
+                <CommentAdd>
+                  <input
+                    type='text'
+                    placeholder='Imię'
+                    value={name}
+                    onChange={handleNameChange}
+                  />
+                  <select value={rating} onChange={handleRatingChange}>
+                    <option value=''>Wybierz ocenę</option>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                  </select>
+                  <CommentInput
+                    type='text'
+                    placeholder='Komentarz'
+                    value={comment}
+                    onChange={handleCommentChange}
+                    maxLength={400}
+                  />
+                  <Button onClick={handleCommentSubmit}>Dodaj komentarz</Button>
+                </CommentAdd>
               )}
-            </Comments>
-            {!logIn ? (
-              <CommentAdd>
-                <p>Zaloguj się aby dodać ocene i komentarz</p>
-                <Button onClick={handleLogIn}>Zaloguj się</Button>
-              </CommentAdd>
-            ) : (
-              <CommentAdd>
-                <input
-                  type='text'
-                  placeholder='Imię'
-                  value={name}
-                  onChange={handleNameChange}
-                />
-                <select value={rating} onChange={handleRatingChange}>
-                  <option value=''>Wybierz ocenę</option>
-                  <option value='1'>1</option>
-                  <option value='2'>2</option>
-                  <option value='3'>3</option>
-                  <option value='4'>4</option>
-                  <option value='5'>5</option>
-                </select>
-                <CommentInput
-                  type='text'
-                  placeholder='Komentarz'
-                  value={comment}
-                  onChange={handleCommentChange}
-                  maxLength={400}
-                />
-
-                <Button onClick={handleCommentSubmit}>Dodaj komentarz</Button>
-              </CommentAdd>
-            )}
-          </SectionComment>
-        </>
-      )}
+            </SectionComment>
+          </>
+        )}
       </Container>
     </Section>
   )

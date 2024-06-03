@@ -89,8 +89,8 @@ button{
 `
 export const Rating = styled.p`
 position: absolute;
-right:0;
-bottom:0;
+right: 0;
+bottom: 0;
 `
 export const ErrorSection= styled.span`
 width: 100%;
